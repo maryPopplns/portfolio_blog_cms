@@ -1,10 +1,15 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import Navbar from './Navbar';
 
 describe('Navbar', () => {
-  // test('header includes first name', () => {
-  //   render(<Navbar />);
-  //   const firstName = screen.getByRole('heading', { name: /spencer/i });
-  //   expect(firstName).toBeInTheDocument();
-  // });
+  test('navbar includes home button', () => {
+    render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
+    const homeLink = screen.getByRole('link', { name: /home/i });
+    expect(homeLink).toBeInTheDocument();
+  });
 });
