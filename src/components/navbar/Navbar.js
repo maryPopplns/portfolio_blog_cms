@@ -4,8 +4,14 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   return (
     <nav>
-      <Link to={'/'}>home</Link>
-      <Link to={'/create'}>+</Link>
+      <ul>
+        <li>
+          <Link to={'/'}>home</Link>
+        </li>
+        <li>
+          <Link to={'/create'}>create +</Link>
+        </li>
+      </ul>
     </nav>
   );
 }

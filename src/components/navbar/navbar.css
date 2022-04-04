@@ -1,0 +1,21 @@
+/* global */
+nav,
+nav ul {
+  width: 100%;
+}
+
+nav ul,
+nav ul li {
+  display: flex;
+}
+
+/* mobile */
+@media (max-width: 799px) {
+  nav ul {
+    justify-content: space-between;
+  }
+  nav ul li {
+    justify-content: center;
+    width: 100%;
+  }
+}
