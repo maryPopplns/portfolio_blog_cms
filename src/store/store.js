@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './slices/counter';
+import loggedinReducer from './slices/loggedin';
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
+    loggedin: loggedinReducer,
   },
 });

@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from '../components/navbar/Navbar';
 import Homepage from '../components/homepage/Homepage';
+import Login from '../components/login/Login';
 import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <>
+      <Login />
       {loggedIn && (
         <Routes>
           <Route path='/' element={<Navbar />}>
