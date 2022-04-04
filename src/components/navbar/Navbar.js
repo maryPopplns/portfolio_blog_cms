@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav>
+    <nav className='global_navbar'>
       <ul>
         <li>
           <Link to={'/'}>home</Link>
         </li>
         <li>
-          <Link to={'/create'}>create +</Link>
+          <Link to={'/create'}>new post +</Link>
         </li>
       </ul>
     </nav>
