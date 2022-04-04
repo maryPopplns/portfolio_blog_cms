@@ -1,5 +1,5 @@
 import './navbar.css';
-import { Link, MemoryRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (

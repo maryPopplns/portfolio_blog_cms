@@ -35,6 +35,5 @@ describe('Navbar', () => {
       })
     );
     // TODO finish once the homepage is complete
-    // expect(homeLink).toBeInTheDocument();
   });
 });
