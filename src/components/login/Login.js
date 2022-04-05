@@ -10,7 +10,7 @@ function Login() {
   const jwtToken = useSelector((state) => state.jwtToken.value);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorStyle, setErrorStyle] = useState({});
+  const [errorClass, setErrorClass] = useState('');
 
   useEffect(() => {
     console.log(jwtToken);
@@ -35,11 +35,8 @@ function Login() {
           dispatch(login());
           return result.json();
         } else {
-          // set error styling on inputs
-          setErrorStyle({
-            color: 'red',
-            outline: '2px solid red',
-          });
+          // set error class on inputs
+          setErrorClass('login_input_error');
         }
       })
       .then((loginInfo) => {
@@ -57,7 +54,7 @@ function Login() {
         <li>
           <input
             data-testid='loginUsername'
-            style={errorStyle}
+            className={errorClass}
             id='username'
             type='text'
             value={username}
@@ -67,7 +64,7 @@ function Login() {
         <li>
           <input
             data-testid='loginPassword'
-            style={errorStyle}
+            className={errorClass}
             id='password'
             type='password'
             value={password}

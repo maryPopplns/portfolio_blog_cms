@@ -21,7 +21,13 @@
   border-radius: 0.5rem;
   background-color: var(--blue);
   font-family: var(--thin-font);
+  font-size: 1.1rem;
   text-align: center;
+}
+
+.login_input_error {
+  color: red;
+  outline: 2px solid red;
 }
 
 @media (max-width: 799px) {
