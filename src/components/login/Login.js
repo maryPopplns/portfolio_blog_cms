@@ -15,6 +15,9 @@ function Login() {
         <li>
           <input id='password' type='password'></input>
         </li>
+        <div>
+          <button className='login_form_submit_button'>enter</button>
+        </div>
       </ul>
     </form>
   );

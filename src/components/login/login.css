@@ -18,7 +18,29 @@
 
 .login_form li input {
   margin: 0.25rem 0;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: var(--blue);
   font-family: var(--thin-font);
   text-align: center;
+}
+
+@media (max-width: 799px) {
+  .login_form div {
+    display: flex;
+    justify-content: center;
+  }
+  .login_form_submit_button {
+    margin-top: 1rem;
+    padding: 0 1rem;
+    font-family: var(--thin-font);
+    font-size: 1.1rem;
+    background-color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 0.5rem;
+  }
+}
+@media (min-width: 800px) {
+  .login_form_submit_button {
+    visibility: hidden;
+  }
 }
