@@ -11,7 +11,7 @@ describe('Login Page', () => {
   test('form contains 2 input elements', () => {
     render(
       <Provider store={store}>
-        <App />
+        <Login />
       </Provider>
     );
 
@@ -24,7 +24,7 @@ describe('Login Page', () => {
   test('form contains submit button', () => {
     render(
       <Provider store={store}>
-        <App />
+        <Login />
       </Provider>
     );
 
@@ -80,4 +80,5 @@ describe('Login Page', () => {
       expect(homepage).toBeInTheDocument();
     });
   });
+  // TODO test for setting JWT in store
 });
