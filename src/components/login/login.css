@@ -1,3 +1,24 @@
-span {
-  color: white;
+@font-face {
+  font-family: 'archivoThin';
+  src: url('../../fonts/ArchivoNarrow-VariableFont_wght.ttf') format('truetype');
+}
+
+:root {
+  --blue: rgb(158, 225, 232);
+  --thin-font: archivoThin;
+}
+
+.login_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login_form li input {
+  margin: 0.25rem 0;
+  border-radius: 0.25rem;
+  font-family: var(--thin-font);
+  text-align: center;
 }

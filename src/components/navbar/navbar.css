@@ -3,15 +3,10 @@
   font-family: 'archivoRegular';
   src: url('../../fonts/ArchivoBlack-Regular.ttf') format('truetype');
 }
-@font-face {
-  font-family: 'archivoThin';
-  src: url('../../fonts/ArchivoNarrow-VariableFont_wght.ttf') format('truetype');
-}
 
 :root {
   --blue: rgb(158, 225, 232);
   --regular-font: archivoRegular;
-  --thin-font: archivoThin;
 }
 
 /* global */

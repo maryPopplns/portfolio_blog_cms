@@ -7,13 +7,13 @@ function Login() {
   // dispatch(login())
 
   return (
-    <form>
+    <form className='login_form'>
       <ul>
         <li>
-          <input type='text'></input>
+          <input id='username' type='text'></input>
         </li>
         <li>
-          <input type='text'></input>
+          <input id='password' type='password'></input>
         </li>
       </ul>
     </form>
