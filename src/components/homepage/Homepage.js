@@ -1,3 +1,5 @@
+import './homepage.css';
+
 function Homepage() {
   return <div>homepage</div>;
 }
