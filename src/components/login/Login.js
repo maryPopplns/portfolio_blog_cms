@@ -56,6 +56,7 @@ function Login() {
       <ul>
         <li>
           <input
+            data-testid='loginUsername'
             style={errorStyle}
             id='username'
             type='text'
@@ -65,6 +66,7 @@ function Login() {
         </li>
         <li>
           <input
+            data-testid='loginPassword'
             style={errorStyle}
             id='password'
             type='password'
@@ -73,7 +75,7 @@ function Login() {
           ></input>
         </li>
         <div>
-          <button className='login_form_submit_button'>enter</button>
+          <button className='login_form_submit_button'>submit</button>
         </div>
       </ul>
     </form>
