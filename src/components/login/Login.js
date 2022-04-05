@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../store/slices/loggedIn';
+import { setJwtToken } from '../../store/slices/jwtToken';
 import urlencoded from '../../helpers/urlencoded';
 
 import './login.css';
@@ -29,7 +30,7 @@ function Login() {
       })
       .catch((error) => {
         console.log(error);
-        // TODO create modal for error
+        // TODO make red rings arond inputs
       });
   }
 
