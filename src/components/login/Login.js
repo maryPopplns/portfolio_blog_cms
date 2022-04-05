@@ -34,6 +34,9 @@ function Login() {
         } else {
           // set error class on inputs
           setErrorClass('login_input_error');
+          setTimeout(() => {
+            setErrorClass('');
+          }, 2000);
         }
       })
       .then((loginInfo) => {
