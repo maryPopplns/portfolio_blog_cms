@@ -44,6 +44,30 @@ describe('Login Page', () => {
     const usernameInput = screen.getByTestId('loginUsername');
     const passwordInput = screen.getByTestId('loginPassword');
 
+    userEvent.type(usernameInput, 'spencer1');
+    userEvent.type(passwordInput, '123');
+
+    const submitButton = screen.getByRole('button', { name: /submit/i });
+
+    userEvent.click(submitButton);
+
+    await waitFor(() => {
+      const updatedInput = screen.getByTestId('loginPassword');
+      expect(updatedInput).toHaveClass('login_input_error');
+    });
+  });
+  test('correct password grants access', async () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    const usernameInput = screen.getByTestId('loginUsername');
+    const passwordInput = screen.getByTestId('loginPassword');
+
     userEvent.type(usernameInput, 'spencer');
     userEvent.type(passwordInput, '123');
 
