@@ -7,16 +7,20 @@ import urlencoded from '../../helpers/urlencoded';
 import './login.css';
 
 function Login() {
+  const jwtToken = useSelector((state) => state.jwtToken.value);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // const dispatch = useDispatch();
-  // dispatch(login())
+  useEffect(() => {
+    console.log(jwtToken);
+  }, [jwtToken]);
 
-  const loginInfo = urlencoded({ username, password });
+  const dispatch = useDispatch();
 
   function loginHandler(event) {
     event.preventDefault();
+
+    const loginInfo = urlencoded({ username, password });
     fetch('https://protected-beyond-87972.herokuapp.com/user/login', {
       method: 'POST',
       headers: {
@@ -24,13 +28,21 @@ function Login() {
       },
       body: loginInfo,
     })
-      .then((result) => result.json())
-      .then((loginInfo) => {
-        console.log(loginInfo);
+      .then((result) => {
+        // login upon successful login
+        if (result.status === 200) {
+          dispatch(login());
+          return result.json();
+        } else {
+          // set style for inputs
+        }
       })
-      .catch((error) => {
-        console.log(error);
-        // TODO make red rings arond inputs
+      .then((loginInfo) => {
+        if (loginInfo) {
+          const jwtToken = loginInfo.token;
+          // set token
+          dispatch(setJwtToken(`Token ${jwtToken}`));
+        }
       });
   }
 
