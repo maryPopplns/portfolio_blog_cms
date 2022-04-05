@@ -7,14 +7,10 @@ import urlencoded from '../../helpers/urlencoded';
 import './login.css';
 
 function Login() {
-  const jwtToken = useSelector((state) => state.jwtToken.value);
+  // const jwtToken = useSelector((state) => state.jwtToken.value);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorClass, setErrorClass] = useState('');
-
-  useEffect(() => {
-    console.log(jwtToken);
-  }, [jwtToken]);
 
   const dispatch = useDispatch();
 
