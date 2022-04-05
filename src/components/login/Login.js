@@ -12,10 +12,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const [errorClass, setErrorClass] = useState('');
 
-  useEffect(() => {
-    console.log(jwtToken);
-  }, [jwtToken]);
-
   const dispatch = useDispatch();
 
   function loginHandler(event) {
@@ -33,6 +29,7 @@ function Login() {
         if (result.status === 200) {
           // set login in state
           dispatch(login());
+          // convert result to json
           return result.json();
         } else {
           // set error class on inputs
