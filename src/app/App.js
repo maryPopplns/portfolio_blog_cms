@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <Login />
+      {!loggedIn && <Login />}
       {loggedIn && (
         <Routes>
           <Route path='/' element={<Navbar />}>

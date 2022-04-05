@@ -7,15 +7,12 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    console.log(username);
-    console.log(password);
-  }, [username, password]);
-
   // const dispatch = useDispatch();
   // dispatch(login())
 
-  function loginHandler() {}
+  function loginHandler(event) {
+    event.preventDefault();
+  }
 
   return (
     <form className='login_form' onSubmit={loginHandler}>
