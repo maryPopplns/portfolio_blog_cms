@@ -10,6 +10,7 @@ function Login() {
   const jwtToken = useSelector((state) => state.jwtToken.value);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorStyle, setErrorStyle] = useState({});
 
   useEffect(() => {
     console.log(jwtToken);
@@ -29,18 +30,22 @@ function Login() {
       body: loginInfo,
     })
       .then((result) => {
-        // login upon successful login
         if (result.status === 200) {
+          // set login in state
           dispatch(login());
           return result.json();
         } else {
-          // set style for inputs
+          // set error styling on inputs
+          setErrorStyle({
+            color: 'red',
+            outline: '2px solid red',
+          });
         }
       })
       .then((loginInfo) => {
         if (loginInfo) {
           const jwtToken = loginInfo.token;
-          // set token
+          // set token in state
           dispatch(setJwtToken(`Token ${jwtToken}`));
         }
       });
@@ -51,6 +56,7 @@ function Login() {
       <ul>
         <li>
           <input
+            style={errorStyle}
             id='username'
             type='text'
             value={username}
@@ -59,6 +65,7 @@ function Login() {
         </li>
         <li>
           <input
+            style={errorStyle}
             id='password'
             type='password'
             value={password}
