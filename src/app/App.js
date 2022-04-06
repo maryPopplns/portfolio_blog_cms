@@ -24,6 +24,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Navbar />}>
             <Route index element={<Homepage />} />
+            {/* <Route path=':postID' element={} /> */}
           </Route>
         </Routes>
       )}
