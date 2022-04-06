@@ -8,14 +8,17 @@
 }
 
 :root {
-  --blue: rgb(158, 225, 232);
+  --blue: #9ee1e8;
+  --orange: #fbb193;
   --regular-font: archivoRegular;
+  --thin-font: archivoThin;
 }
 
 /* global */
 a.homepage_post_link {
   text-decoration: none;
-  color: white;
+  color: var(--orange);
+  font-family: var(--thin-font);
 }
 
 /* mobile */
@@ -26,10 +29,13 @@ a.homepage_post_link {
     align-items: center;
   }
   a.homepage_post_link div {
-    width: 80%;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    width: 65%;
     margin: 1rem 0;
     text-align: center;
-    border: 2px solid var(--blue);
+    border: 3px solid var(--blue);
+    border-radius: 0.5rem;
   }
   p.homepage_post_body {
     width: 80%;
