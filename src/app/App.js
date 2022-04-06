@@ -6,13 +6,16 @@ import Homepage from '../components/homepage/Homepage';
 import Login from '../components/login/Login';
 import getPosts from '../helpers/getPosts';
 import './App.css';
+import { setPosts } from '../store/slices/posts';
 
 function App() {
-  useEffect(() => {
-    getPosts();
-  }, []);
-
   const loggedIn = useSelector((state) => state.loggedIn.value);
+  useEffect(() => {
+    (async () => {
+      const posts = await getPosts();
+      await setPosts(posts);
+    })();
+  }, []);
 
   return (
     <>
