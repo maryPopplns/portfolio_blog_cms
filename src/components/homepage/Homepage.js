@@ -16,7 +16,7 @@ function Homepage() {
     <main className='homepage'>
       <h1 className='homepage_header'>all posts</h1>
       <hr className='homepage_header_hr' />
-      <div>{postComponents}</div>
+      <div className='postsContainer'>{postComponents}</div>
       <Outlet />
     </main>
   );
