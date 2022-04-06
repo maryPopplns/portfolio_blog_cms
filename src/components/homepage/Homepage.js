@@ -11,6 +11,7 @@ function Homepage() {
     return <Post data={post} key={post._id} />;
   });
 
+  // TODO make homepage size calc(100vh - navbar)
   return (
     <main className='homepage'>
       <h1 className='homepage_header'>all posts</h1>
