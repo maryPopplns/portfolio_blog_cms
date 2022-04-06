@@ -12,8 +12,9 @@ function Homepage() {
   });
 
   return (
-    <main>
-      <h1>Blog CMS</h1>
+    <main className='homepage'>
+      <h1 className='homepage_header'>all posts</h1>
+      <hr className='homepage_header_hr' />
       <div>{postComponents}</div>
       <Outlet />
     </main>

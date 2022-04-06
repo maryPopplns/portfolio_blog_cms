@@ -4,7 +4,6 @@
 }
 
 :root {
-  --green: rgb(162, 235, 159);
   --thin-font: archivoThin;
 }
 
@@ -18,12 +17,15 @@
 
 .login_form li input {
   margin: 0.25rem 0;
-  background-color: var(--green);
+  background-color: white;
   font-family: var(--thin-font);
   font-size: 1.1rem;
   text-align: center;
   border: none;
   border-radius: 0.5rem;
+}
+.login_form li input:focus {
+  outline: none;
 }
 
 .login_input_error {
@@ -40,9 +42,10 @@
     margin-top: 1rem;
     padding: 0 1rem;
     font-family: var(--thin-font);
-    font-size: 1.1rem;
-    background-color: var(--green);
-    border: 1px solid var(--green);
+    font-size: 1.3rem;
+    color: white;
+    background-color: black;
+    border: 3px solid white;
     border-radius: 0.5rem;
   }
 }

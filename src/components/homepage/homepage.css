@@ -1,3 +1,47 @@
+@font-face {
+  font-family: 'archivoRegular';
+  src: url('../../fonts/ArchivoBlack-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'archivoThin';
+  src: url('../../fonts/ArchivoNarrow-VariableFont_wght.ttf') format('truetype');
+}
+
+:root {
+  --blue: rgb(158, 225, 232);
+  --regular-font: archivoRegular;
+}
+
+/* global */
 body {
   color: white;
+}
+h1.homepage_header {
+  font-family: var(--regular-font);
+  color: var(--blue);
+  text-transform: uppercase;
+  text-align: center;
+}
+.homepage_header_hr {
+  background-color: var(--blue);
+  border: none;
+}
+
+/* mobile */
+@media (max-width: 499px) {
+  main.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1.homepage_header {
+    margin-top: 1rem;
+    font-size: 3rem;
+  }
+  .homepage_header_hr {
+    width: 85%;
+    height: 2px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
 }

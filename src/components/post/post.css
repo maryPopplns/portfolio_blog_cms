@@ -1,4 +1,12 @@
 a {
+  text-decoration: none;
   color: white;
   margin: 1rem 0;
+}
+
+/* mobile */
+@media (max-width: 499px) {
+  p.homepage_post_body {
+    display: none;
+  }
 }

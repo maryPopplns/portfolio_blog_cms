@@ -8,7 +8,7 @@ function Post({ data }) {
   return (
     <Link to={_id}>
       <h2>{title}</h2>
-      {/* <p>{body}</p> */}
+      <p className='homepage_post_body'>{body}</p>
     </Link>
   );
 }
