@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import './post.css';
 
 function Post({ data }) {
-  const { _id, title, body } = data;
+  const { _id, title } = data;
 
   return (
-    <Link className='homepage_post_link' to={_id}>
-      <div>
-        <h2>{title}</h2>
-        <p className='homepage_post_body'>{body}</p>
-      </div>
-    </Link>
+    <div className='homepage_post_link_container'>
+      <Link className='homepage_post_link' to={_id}>
+        <div>
+          <h2 className='homepage_post_title'>{title}</h2>
+        </div>
+      </Link>
+    </div>
   );
 }
 
