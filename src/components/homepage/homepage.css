@@ -42,6 +42,14 @@ main.homepage {
   overflow-y: auto;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--blue);
+}
+
 /* mobile */
 @media (max-width: 499px) {
   .postsContainer {
