@@ -32,11 +32,15 @@ a.homepage_post_link div {
   border: 3px solid var(--blue);
   border-radius: 0.5rem;
 }
-p.homepage_post_body {
-  width: 80%;
-  /* display: none; */
+
+/* hide post body */
+@media (max-width: 499) {
+  p.homepage_post_body {
+    display: none;
+  }
 }
 
+/* tablet */
 @media (min-width: 500px) {
   a.homepage_post_link div {
     box-sizing: border-box;
@@ -44,6 +48,7 @@ p.homepage_post_body {
   }
 }
 
+/* desktop */
 @media (min-width: 800px) {
   a.homepage_post_link div {
     width: 30vw;
