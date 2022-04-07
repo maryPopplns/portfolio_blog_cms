@@ -33,6 +33,10 @@ a.homepage_post_link div {
   text-align: center;
   border: 3px solid var(--blue);
   border-radius: 0.5rem;
+  transition: transform 0.25s;
+}
+a.homepage_post_link div:hover {
+  transform: scale(1.2);
 }
 h2.homepage_post_title {
   font-family: var(--regular-font);

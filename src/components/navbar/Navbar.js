@@ -10,7 +10,7 @@ function Navbar() {
             <Link to={'/'}>home</Link>
           </li>
           <li>
-            <Link to={'/create'}>new post +</Link>
+            <Link to={'/new'}>new post +</Link>
           </li>
         </ul>
       </nav>
