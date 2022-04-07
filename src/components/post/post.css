@@ -29,6 +29,7 @@ div.homepage_post_link_container {
 a.homepage_post_link div {
   box-sizing: border-box;
   padding: 0.75rem 1rem;
+  width: 20rem;
   text-align: center;
   border: 3px solid var(--blue);
   border-radius: 0.5rem;
@@ -37,16 +38,10 @@ h2.homepage_post_title {
   font-family: var(--regular-font);
 }
 
-/* @media (max-width: 499px) {
-  a.homepage_post_link div {
-    width: 20rem;
-  }
-} */
 /* tablet */
 @media (min-width: 500px) {
   a.homepage_post_link div {
     box-sizing: border-box;
-    width: 20rem;
   }
   h2.homepage_post_title {
     font-size: 1.2rem;
@@ -60,5 +55,15 @@ h2.homepage_post_title {
   }
   h2.homepage_post_title {
     font-size: 1.4rem;
+  }
+}
+
+/* large desktop */
+@media (min-width: 1000px) {
+  a.homepage_post_link div {
+    width: 30rem;
+  }
+  h2.homepage_post_title {
+    font-size: 1.6rem;
   }
 }
