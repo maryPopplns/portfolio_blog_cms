@@ -2,9 +2,10 @@ import './newPost.css';
 
 function NewPost() {
   return (
-    <div>
+    <main className='newPost'>
       <h1>new post</h1>
-    </div>
+      <form></form>
+    </main>
   );
 }
 

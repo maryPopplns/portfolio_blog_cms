@@ -39,6 +39,7 @@ main.homepage {
   height: calc(100vh - 4rem);
 }
 .postsContainer {
+  width: 100%;
   overflow-y: auto;
 }
 
@@ -50,16 +51,10 @@ main.homepage {
   background: var(--blue);
 }
 
-/* mobile */
+/* mobile  */
 @media (max-width: 499px) {
-  .postsContainer {
-    width: 85%;
-  }
-}
-
-/* tablet */
-@media (min-width: 500px) {
-  .postsContainer {
-    width: 100%;
+  ::-webkit-scrollbar {
+    width: 5px;
+    background: black;
   }
 }
