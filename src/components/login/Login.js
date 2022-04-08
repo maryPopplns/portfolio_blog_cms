@@ -41,6 +41,9 @@ function Login() {
       .then((loginInfo) => {
         if (loginInfo) {
           const jwtToken = loginInfo.token;
+          const apiKey = loginInfo.key;
+          // set api key in state
+          console.log(apiKey);
           // set token in state
           dispatch(setJwtToken(`Token ${jwtToken}`));
         }

@@ -32,7 +32,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem 0.5rem;
-  top: calc(50% - 193px);
+  top: calc(50% - 201px);
   box-shadow: none;
   border: 2px solid var(--blue);
 }
@@ -60,6 +60,7 @@
   padding-left: 0.25rem;
   border-radius: 0.25rem;
   border: none;
+  font-family: var(--thin-font);
 }
 .new_post input {
   height: 1.2rem;
@@ -67,8 +68,12 @@
 .new_post textarea {
   height: 12rem;
 }
+.new_post_button_container {
+  display: flex;
+  margin-top: 2rem;
+}
 .new_post button {
-  margin-top: 1rem;
+  margin: 0 1rem;
   padding: 0.5rem 1rem;
   color: var(--blue);
   background-color: black;
