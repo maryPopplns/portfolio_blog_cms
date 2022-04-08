@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './newPost.css';
 
 function NewPost() {
@@ -9,20 +8,10 @@ function NewPost() {
     event.preventDefault();
   }
   function analyzeHandler() {
-    const url = 'https://api.textgears.com/grammar';
-    fetch('', {
-      method: 'GET',
-      headers: {
-        Authorization: 'application/x-www-form-urlencoded',
-      },
-    })
-      .then((result) => {
-        //
-      })
-      .catch((error) => {
-        //
-      });
+    //
   }
+
+  // TODO change size of input text
 
   return (
     <main className='new_post'>

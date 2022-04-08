@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../store/slices/loggedIn';
 import { setJwtToken } from '../../store/slices/jwtToken';
-import { setKey } from '../../store/slices/apiKey';
 import urlencoded from '../../helpers/urlencoded';
 
 import './login.css';
@@ -42,9 +41,6 @@ function Login() {
       .then((loginInfo) => {
         if (loginInfo) {
           const jwtToken = loginInfo.token;
-          const apiKey = loginInfo.key;
-          // set api key in state
-          dispatch(setKey(apiKey));
           // set token in state
           dispatch(setJwtToken(`Token ${jwtToken}`));
         }
