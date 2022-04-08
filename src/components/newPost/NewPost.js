@@ -25,12 +25,11 @@ function NewPost() {
             type='textarea'
             id='new_post_body'
             name='new_post_body'
-            resize='false'
             value={body}
             onChange={({ target }) => setBody(target.value)}
           ></textarea>
         </div>
-        <button></button>
+        <button>submit</button>
       </form>
     </main>
   );
