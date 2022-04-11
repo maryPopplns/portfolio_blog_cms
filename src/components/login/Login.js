@@ -42,7 +42,7 @@ function Login() {
         if (loginInfo) {
           const jwtToken = loginInfo.token;
           // set token in state
-          dispatch(setJwtToken(`Token ${jwtToken}`));
+          dispatch(setJwtToken(jwtToken));
         }
       });
   }

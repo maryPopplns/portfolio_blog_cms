@@ -1,4 +1,7 @@
 import './newPost.css';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import urlencoded from '../../helpers/urlencoded';
 
 function NewPost() {
   const [title, setTitle] = useState('');
@@ -7,8 +10,22 @@ function NewPost() {
   function formHandler(event) {
     event.preventDefault();
   }
+
+  const jwtToken = useSelector((state) => state.jwtToken.value);
   function analyzeHandler() {
-    //
+    const postBody = urlencoded({ body });
+    fetch('https://protected-beyond-87972.herokuapp.com/grammar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      body: postBody,
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        console.log(result);
+      });
   }
 
   // TODO change size of input text
