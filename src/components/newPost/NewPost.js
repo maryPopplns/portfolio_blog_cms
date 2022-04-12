@@ -6,12 +6,25 @@ import urlencoded from '../../helpers/urlencoded';
 function NewPost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const jwtToken = useSelector((state) => state.jwtToken.value);
 
   function formHandler(event) {
     event.preventDefault();
+    const newPost = urlencoded({ title, body });
+    fetch('https://protected-beyond-87972.herokuapp.com/post', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      body: newPost,
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        console.log(result);
+      });
   }
 
-  const jwtToken = useSelector((state) => state.jwtToken.value);
   function analyzeHandler() {
     const postBody = urlencoded({ body });
     fetch('https://protected-beyond-87972.herokuapp.com/grammar', {

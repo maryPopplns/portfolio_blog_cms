@@ -30,7 +30,11 @@ nav.global_navbar ul li {
   border-radius: 0.25rem;
 }
 nav.global_navbar ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100%;
   font-family: var(--regular-font);
   text-decoration: none;
   color: var(--blue);
