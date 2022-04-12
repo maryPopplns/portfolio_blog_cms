@@ -2,11 +2,13 @@ import './newPost.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import urlencoded from '../../helpers/urlencoded';
+import Analysis from '../analysis/Analysis';
 
 function NewPost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [errors, setErrors] = useState([{}]);
+  const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);
 
   function formHandler(event) {
@@ -39,44 +41,48 @@ function NewPost() {
     })
       .then((result) => result.json())
       .then((result) => {
+        setAnalysis(true);
         setErrors(result.errors);
       });
   }
 
   return (
-    <main className='new_post'>
-      <h1>new post</h1>
-      <form onSubmit={formHandler}>
-        <div className='new_post_input_container'>
-          <label htmlFor='new_post_title'>title</label>
-          <input
-            type='text'
-            id='new_post_title'
-            name='new_post_title'
-            required
-            value={title}
-            onChange={({ target }) => setTitle(target.value)}
-          ></input>
-        </div>
-        <div className='new_post_input_container'>
-          <label htmlFor='new_post_body'>body</label>
-          <textarea
-            type='textarea'
-            id='new_post_body'
-            name='new_post_body'
-            required
-            value={body}
-            onChange={({ target }) => setBody(target.value)}
-          ></textarea>
-        </div>
-        <div className='new_post_button_container'>
-          <button type='button' onClick={analyzeHandler}>
-            analyze
-          </button>
-          <button type='submit'>submit</button>
-        </div>
-      </form>
-    </main>
+    <>
+      <main className='new_post'>
+        <h1>new post</h1>
+        <form onSubmit={formHandler}>
+          <div className='new_post_input_container'>
+            <label htmlFor='new_post_title'>title</label>
+            <input
+              type='text'
+              id='new_post_title'
+              name='new_post_title'
+              required
+              value={title}
+              onChange={({ target }) => setTitle(target.value)}
+            ></input>
+          </div>
+          <div className='new_post_input_container'>
+            <label htmlFor='new_post_body'>body</label>
+            <textarea
+              type='textarea'
+              id='new_post_body'
+              name='new_post_body'
+              required
+              value={body}
+              onChange={({ target }) => setBody(target.value)}
+            ></textarea>
+          </div>
+          <div className='new_post_button_container'>
+            <button type='button' onClick={analyzeHandler}>
+              analyze
+            </button>
+            <button type='submit'>submit</button>
+          </div>
+        </form>
+      </main>
+      {analysis && <Analysis data={{ errors, body }} />}
+    </>
   );
 }
 
