@@ -11,7 +11,7 @@ function NewPost() {
   function formHandler(event) {
     event.preventDefault();
     const newPost = urlencoded({ title, body });
-    fetch('https://protected-beyond-87972.herokuapp.com/post', {
+    fetch('https://whispering-depths-29284.herokuapp.com/post', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -27,7 +27,7 @@ function NewPost() {
 
   function analyzeHandler() {
     const postBody = urlencoded({ body });
-    fetch('https://protected-beyond-87972.herokuapp.com/grammar', {
+    fetch('https://whispering-depths-29284.herokuapp.com/grammar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',

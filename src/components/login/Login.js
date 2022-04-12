@@ -17,7 +17,7 @@ function Login() {
     event.preventDefault();
 
     const loginInfo = urlencoded({ username, password });
-    fetch('https://protected-beyond-87972.herokuapp.com/user/login', {
+    fetch('https://whispering-depths-29284.herokuapp.com/user/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',

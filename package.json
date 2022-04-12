@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build && rm -rf ../portfolio_api/public && mv build ../portfolio_api/public",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build && rm -rf ../portfolio_api2/public && mv build ../portfolio_api2/public",
     "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "git": "git add . && git commit && git push origin $(git rev-parse --abbrev-ref HEAD) && echo '\n' && echo $(tput setaf 2)'committed: ' $(tput setaf 1)$(date) && echo '\n'"
