@@ -11,6 +11,8 @@ function Homepage() {
     return <Post data={post} key={post._id} />;
   });
 
+  // TODO load posts upon component load
+
   return (
     <main className='homepage'>
       <h1 className='homepage_header'>all posts</h1>
