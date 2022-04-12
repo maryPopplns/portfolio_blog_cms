@@ -6,6 +6,7 @@ import urlencoded from '../../helpers/urlencoded';
 function NewPost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [errors, setErrors] = useState([{}]);
   const jwtToken = useSelector((state) => state.jwtToken.value);
 
   function formHandler(event) {
@@ -21,6 +22,7 @@ function NewPost() {
     })
       .then((result) => result.json())
       .then((result) => {
+        // TODO redirect to homepage
         console.log(result);
       });
   }
@@ -37,11 +39,9 @@ function NewPost() {
     })
       .then((result) => result.json())
       .then((result) => {
-        console.log(result);
+        setErrors(result.errors);
       });
   }
-
-  // TODO change size of input text
 
   return (
     <main className='new_post'>
