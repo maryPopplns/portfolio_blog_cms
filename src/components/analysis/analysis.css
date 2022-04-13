@@ -1,0 +1,16 @@
+main.analysis {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+}
+
+span.text_error {
+  margin: 0.5rem;
+  color: red;
+}
