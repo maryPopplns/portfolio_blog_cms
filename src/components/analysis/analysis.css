@@ -54,17 +54,15 @@ hr.analysis_suggestions_divisor {
 
 div.error_list_container,
 div.spelling_errors,
+div.grammar_errors,
 .error_header {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 div.error_list_container {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  width: 100%;
   min-height: 45vh;
-  height: auto;
-  /* width: auto; */
   max-width: 1000px;
   overflow-y: auto;
 }
@@ -85,8 +83,9 @@ div.error_description_open {
   height: auto;
   visibility: visible;
 }
-.grammar_errors,
-.spelling_errors {
+
+div.error_container,
+div.error_container ul {
   width: 100%;
 }
 li.error {
@@ -97,7 +96,7 @@ li.error {
 }
 div.open_error_button {
   padding: 0.5rem 1rem;
-  width: 50%;
+  width: 35%;
   text-align: center;
   border: 2px solid var(--blue);
   border-radius: 0.25rem;
@@ -105,6 +104,4 @@ div.open_error_button {
 
 /* mobile */
 /* @media (max-width: 499px) {
-  div.error_list_container h2 {
-  }
 } */

@@ -129,11 +129,11 @@ function Analysis({ data }) {
       <div className='analysis_text'>{body}</div>
       <hr className='analysis_suggestions_divisor' />
       <div className='error_list_container'>
-        <div className='spelling_errors'>
+        <div className='error_container spelling_errors'>
           <h2 className='error_header'>spelling errors</h2>
           <ul>{spellingErrors}</ul>
         </div>
-        <div className='grammar_errors'>
+        <div className='error_container grammar_errors'>
           <h2 className='error_header'>grammar errors</h2>
           <ul>{grammarErrors}</ul>
         </div>
