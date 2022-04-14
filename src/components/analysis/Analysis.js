@@ -15,7 +15,7 @@ function Analysis({ data }) {
   const [normalComponents, setNormalComponents] = useState();
 
   useEffect(() => {
-    create components from errors
+    // create components from errors
     const allErrors = data.errors.map(({ offset, length }) => ({
       offset,
       length,
@@ -48,17 +48,28 @@ function Analysis({ data }) {
     });
     const normalComponents = allNormal.map((array, index) => {
       const joined = array.join('');
-      return <Normal text={joined} />;
+      return <Normal text={joined} key={index} />;
     });
 
     setNormalComponents(normalComponents);
+
+    // const isErrorFirst = data.errors[0].offset === 0
+
+    //     var array1 = [1, 2, 3, 4, 5];
+    // var array2 = ['a', 'b', 'c'];
+
+    // const combined = array1.map((e,i)=> {
+    //     if (array2[i]) {
+    //     return [e, array2[i]]
+    //     }
+    //     return e
+    // }).flat()
   }, [data]);
 
   return (
     <main className='analysis'>
-      <p>{normalComponents}</p>
-      <p>{errorComponents}</p>
-      <p>{`${isErrorFirst}`}</p>
+      <div>{normalComponents}</div>
+      <div>{errorComponents}</div>
     </main>
   );
 }
