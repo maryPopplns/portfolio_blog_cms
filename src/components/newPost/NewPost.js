@@ -8,11 +8,8 @@ import data from './data.json'; // TODO remove
 
 function NewPost() {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState(
-    'i is enginerr. why no second sentecne being analyzed?'
-  );
+  const [body, setBody] = useState('');
   // TODO remove placeholder text
-  // const [body, setBody] = useState('');
   const [errors, setErrors] = useState([{}]);
   const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);
@@ -36,6 +33,8 @@ function NewPost() {
   }
 
   function analyzeHandler() {
+    //  TODO requires login
+
     // const postBody = urlencoded({ body });
     // fetch('https://whispering-depths-29284.herokuapp.com/grammar', {
     //   method: 'POST',
@@ -50,8 +49,6 @@ function NewPost() {
     //     setAnalysis(true);
     //     setErrors(errors);
     //   });
-
-    // TODO make api call
 
     setAnalysis(true);
     setErrors(data.errors);

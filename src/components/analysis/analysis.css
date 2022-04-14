@@ -11,7 +11,8 @@ main.analysis {
 }
 
 span.text_error {
-  margin: 0.5rem;
+  /* margin-left: 0.5rem;
+  margin-right: 0.5rem; */
   color: red;
 }
 

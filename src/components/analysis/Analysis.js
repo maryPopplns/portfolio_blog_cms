@@ -1,5 +1,5 @@
 import './analysis.css';
-import { uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -25,7 +25,6 @@ function Analysis({ data }) {
       const text = data.body.slice(offset, offset + length);
       return <Error text={text} key={key} />;
     });
-    // setErrorComponents(errorComponents);
 
     // create components from correct text
     let errorIndexes = [];
@@ -52,8 +51,6 @@ function Analysis({ data }) {
       const joined = array.join('');
       return <Correct text={joined} key={key} />;
     });
-
-    // setNormalComponents(normalComponents);
 
     // combine arrays
     const isErrorFirst = data.errors[0].offset === 0;

@@ -1,9 +1,8 @@
 import './homepage.css';
-import { uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import Post from '../post/Post';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
 
 function Homepage() {
   const posts = useSelector((state) => state.posts.value);
