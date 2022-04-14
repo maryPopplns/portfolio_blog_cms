@@ -12,17 +12,23 @@ function ErrorText({ text }) {
 }
 
 // error component
-function Error({ error }) {
+function Error({ error, index }) {
   const { description, bad, better } = error;
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <li className='error' onClick={() => setIsOpen((prev) => !prev)}>
-      <div>{description.en}</div>
+    <li className='error'>
+      <div
+        className='open_error_button'
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        {index + 1}
+      </div>
       <div
         className={`error_description_container ${
           isOpen ? 'error_description_open' : 'error_description_close'
         }`}
       >
+        <div>{description.en}</div>
         <div>error: {bad}</div>
         <div>suggestions: {better}</div>
       </div>
@@ -106,13 +112,13 @@ function Analysis({ data }) {
     const grammarErrors = data.errors.filter(
       (error) => error.type === 'grammar'
     );
-    const spellingErrorComponents = spellingErrors.map((error) => {
+    const spellingErrorComponents = spellingErrors.map((error, index) => {
       const key = uuidv4();
-      return <Error error={error} key={key} />;
+      return <Error error={error} key={key} index={index} />;
     });
-    const grammarErrorComponents = grammarErrors.map((error) => {
+    const grammarErrorComponents = grammarErrors.map((error, index) => {
       const key = uuidv4();
-      return <Error error={error} key={key} />;
+      return <Error error={error} key={key} index={index} />;
     });
     setSpellingErrors(spellingErrorComponents);
     setGrammarErrors(grammarErrorComponents);

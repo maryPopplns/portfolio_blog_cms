@@ -63,11 +63,13 @@ div.error_list_container {
   padding-left: 1rem;
   padding-right: 1rem;
   min-height: 45vh;
+  height: auto;
+  /* width: auto; */
   max-width: 1000px;
   overflow-y: auto;
 }
 div.error_list_container h2 {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   font-family: var(--regular-font);
   text-transform: uppercase;
   color: red;
@@ -83,11 +85,22 @@ div.error_description_open {
   height: auto;
   visibility: visible;
 }
+.grammar_errors,
+.spelling_errors {
+  width: 100%;
+}
 li.error {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 1rem 0;
+}
+div.open_error_button {
+  padding: 0.5rem 1rem;
+  width: 50%;
+  text-align: center;
+  border: 2px solid var(--blue);
+  border-radius: 0.25rem;
 }
 
 /* mobile */
