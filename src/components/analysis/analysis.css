@@ -1,3 +1,14 @@
+/* fonts */
+@font-face {
+  font-family: 'archivoRegular';
+  src: url('../../fonts/ArchivoBlack-Regular.ttf') format('truetype');
+}
+
+:root {
+  --blue: rgb(158, 225, 232);
+  --regular-font: archivoRegular;
+}
+
 main.analysis {
   position: fixed;
   display: flex;
@@ -11,7 +22,19 @@ main.analysis {
 }
 
 div.analysis_text {
-  word-spacing: 0.125rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-height: calc(50vh - 1rem);
+  max-width: 1000px;
+  overflow-y: auto;
+  font-family: var(--regular-font);
+}
+
+div.analysis_text p {
   display: flex;
 }
 
