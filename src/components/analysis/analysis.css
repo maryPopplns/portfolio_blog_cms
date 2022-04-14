@@ -15,6 +15,6 @@ span.text_error {
   color: red;
 }
 
-p.analysis_text {
+div.analysis_text {
   display: flex;
 }

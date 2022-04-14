@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 // text components
-function Normal({ text }) {
+function Correct({ text }) {
   return <p>{text}</p>;
 }
 function Error({ text }) {
@@ -11,8 +11,7 @@ function Error({ text }) {
 }
 
 function Analysis({ data }) {
-  const [errorComponents, setErrorComponents] = useState();
-  const [normalComponents, setNormalComponents] = useState();
+  const [body, setBody] = useState();
 
   useEffect(() => {
     // create components from errors
@@ -22,12 +21,11 @@ function Analysis({ data }) {
     }));
     const errorComponents = allErrors.map(({ offset, length }, index) => {
       const text = data.body.slice(offset, offset + length);
-      return <Error text={text} key={index} />;
+      return <Error text={text} />;
     });
-    setErrorComponents(errorComponents);
+    // setErrorComponents(errorComponents);
 
     // create components from correct text
-    const allTextSplit = data.body.split('');
     let errorIndexes = [];
     data.errors.forEach(({ offset, length }) => {
       for (let i = offset; i < offset + length; i++) {
@@ -35,41 +33,53 @@ function Analysis({ data }) {
       }
     });
 
-    let allNormal = [];
-    let currentNormal = [];
+    let allCorrect = [];
+    let currentCorrect = [];
+    const allTextSplit = data.body.split('');
     allTextSplit.forEach((letter, index) => {
       if (!errorIndexes.includes(index)) {
-        currentNormal.push(letter);
+        currentCorrect.push(letter);
       }
-      if (errorIndexes.includes(index) && currentNormal.length !== 0) {
-        allNormal.push(currentNormal);
-        currentNormal = [];
+      if (errorIndexes.includes(index) && currentCorrect.length !== 0) {
+        allCorrect.push(currentCorrect);
+        currentCorrect = [];
       }
     });
-    const normalComponents = allNormal.map((array, index) => {
+    const correctComponents = allCorrect.map((array, index) => {
       const joined = array.join('');
-      return <Normal text={joined} key={index} />;
+      return <Correct text={joined} />;
     });
 
-    setNormalComponents(normalComponents);
+    // setNormalComponents(normalComponents);
 
-    // const isErrorFirst = data.errors[0].offset === 0
-
-    //     var array1 = [1, 2, 3, 4, 5];
-    // var array2 = ['a', 'b', 'c'];
-
-    // const combined = array1.map((e,i)=> {
-    //     if (array2[i]) {
-    //     return [e, array2[i]]
-    //     }
-    //     return e
-    // }).flat()
+    // combine arrays
+    const isErrorFirst = data.errors[0].offset === 0;
+    if (isErrorFirst) {
+      const components = errorComponents
+        .map((component, index) => {
+          if (correctComponents[index]) {
+            return [component, correctComponents[index]];
+          }
+          return component;
+        })
+        .flat();
+      setBody(components);
+    } else {
+      const components = correctComponents
+        .map((component, index) => {
+          if (errorComponents[index]) {
+            return [component, errorComponents[index]];
+          }
+          return component;
+        })
+        .flat();
+      setBody(components);
+    }
   }, [data]);
 
   return (
     <main className='analysis'>
-      <div>{normalComponents}</div>
-      <div>{errorComponents}</div>
+      <div className='analysis_text'>{body}</div>
     </main>
   );
 }
