@@ -5,19 +5,29 @@ import { useEffect } from 'react';
 
 // text components
 function CorrectText({ text }) {
-  return <p>{text}</p>;
+  return <p className='correct_text'>{text}</p>;
 }
 function ErrorText({ text }) {
-  return <p className='text_error'>{text}</p>;
+  return <p className='error_text'>{text}</p>;
 }
-// error components
-function SpellingError({ error }) {
-  console.log(error);
-  return <></>;
-}
-function GrammarError({ error }) {
-  console.log(error);
-  return <></>;
+
+// error component
+function Error({ error }) {
+  const { description, bad, better } = error;
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <li className='error' onClick={() => setIsOpen((prev) => !prev)}>
+      <div>{description.en}</div>
+      <div
+        className={`error_description_container ${
+          isOpen ? 'error_description_open' : 'error_description_close'
+        }`}
+      >
+        <div>error: {bad}</div>
+        <div>suggestions: {better}</div>
+      </div>
+    </li>
+  );
 }
 
 function Analysis({ data }) {
@@ -98,11 +108,11 @@ function Analysis({ data }) {
     );
     const spellingErrorComponents = spellingErrors.map((error) => {
       const key = uuidv4();
-      return <SpellingError error={error} key={key} />;
+      return <Error error={error} key={key} />;
     });
     const grammarErrorComponents = grammarErrors.map((error) => {
       const key = uuidv4();
-      return <GrammarError error={error} key={key} />;
+      return <Error error={error} key={key} />;
     });
     setSpellingErrors(spellingErrorComponents);
     setGrammarErrors(grammarErrorComponents);
@@ -111,8 +121,17 @@ function Analysis({ data }) {
   return (
     <main className='analysis'>
       <div className='analysis_text'>{body}</div>
-      <div className='spelling_errors'>{spellingErrors}</div>
-      <div className='grammar_errors'>{grammarErrors}</div>
+      <hr className='analysis_suggestions_divisor' />
+      <div className='error_list_container'>
+        <div className='spelling_errors'>
+          <h2 className='error_header'>spelling errors</h2>
+          <ul>{spellingErrors}</ul>
+        </div>
+        <div className='grammar_errors'>
+          <h2 className='error_header'>grammar errors</h2>
+          <ul>{grammarErrors}</ul>
+        </div>
+      </div>
     </main>
   );
 }

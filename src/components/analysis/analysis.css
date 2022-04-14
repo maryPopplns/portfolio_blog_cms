@@ -20,26 +20,78 @@ main.analysis {
   width: 100vw;
   background-color: black;
 }
-
 div.analysis_text {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  max-height: calc(45vh - 1rem);
+  max-height: 45vh;
   max-width: 1000px;
   overflow-y: auto;
   font-family: var(--regular-font);
 }
-
 div.analysis_text p {
   display: flex;
 }
-
-p.text_error {
+p.correct_text {
+  color: var(--blue);
+}
+p.error_text {
   margin-left: 0.2rem;
   margin-right: 0.2rem;
   color: red;
 }
+
+hr.analysis_suggestions_divisor {
+  width: 100%;
+  height: 2px;
+  background-color: var(--blue);
+  max-width: 1050px;
+}
+
+div.error_list_container,
+div.spelling_errors,
+.error_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div.error_list_container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 45vh;
+  max-width: 1000px;
+  overflow-y: auto;
+}
+div.error_list_container h2 {
+  margin: 1rem 0;
+  font-family: var(--regular-font);
+  text-transform: uppercase;
+  color: red;
+}
+div.error_description_container {
+  transition: all;
+}
+div.error_description_close {
+  height: 0rem;
+  visibility: hidden;
+}
+div.error_description_open {
+  height: auto;
+  visibility: visible;
+}
+li.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+/* mobile */
+/* @media (max-width: 499px) {
+  div.error_list_container h2 {
+  }
+} */
