@@ -14,3 +14,7 @@ span.text_error {
   margin: 0.5rem;
   color: red;
 }
+
+p.analysis_text {
+  display: flex;
+}

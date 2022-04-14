@@ -11,40 +11,54 @@ function Error({ text }) {
 }
 
 function Analysis({ data }) {
-  const [grammar, setGrammar] = useState([{}]);
-  const [spelling, setSpelling] = useState([{}]);
-  const [body, setBody] = useState();
+  const [errorComponents, setErrorComponents] = useState();
+  const [normalComponents, setNormalComponents] = useState();
 
   useEffect(() => {
-    // seperate errors
-    const grammarErrors = data.errors.filter(
-      (error) => error.type === 'grammar'
-    );
-    const spellingErrors = data.errors.filter(
-      (error) => error.type === 'spelling'
-    );
-    setGrammar(grammarErrors);
-    setSpelling(spellingErrors);
-
-    // create components from errors
+    create components from errors
     const allErrors = data.errors.map(({ offset, length }) => ({
       offset,
-      end: offset + length,
+      length,
     }));
-    const errorComponents = allErrors.map(({ offset, end }, index) => {
-      const text = data.body.slice(offset, end);
+    const errorComponents = allErrors.map(({ offset, length }, index) => {
+      const text = data.body.slice(offset, offset + length);
       return <Error text={text} key={index} />;
     });
-    setBody(errorComponents);
+    setErrorComponents(errorComponents);
 
-    // create componets from correct text
-    const splitBody = data.body.split('');
-    // splitBody.
+    // create components from correct text
+    const allTextSplit = data.body.split('');
+    let errorIndexes = [];
+    data.errors.forEach(({ offset, length }) => {
+      for (let i = offset; i < offset + length; i++) {
+        errorIndexes.push(i);
+      }
+    });
+
+    let allNormal = [];
+    let currentNormal = [];
+    allTextSplit.forEach((letter, index) => {
+      if (!errorIndexes.includes(index)) {
+        currentNormal.push(letter);
+      }
+      if (errorIndexes.includes(index) && currentNormal.length !== 0) {
+        allNormal.push(currentNormal);
+        currentNormal = [];
+      }
+    });
+    const normalComponents = allNormal.map((array, index) => {
+      const joined = array.join('');
+      return <Normal text={joined} />;
+    });
+
+    setNormalComponents(normalComponents);
   }, [data]);
 
   return (
     <main className='analysis'>
-      <p>{body}</p>
+      <p>{normalComponents}</p>
+      <p>{errorComponents}</p>
+      <p>{`${isErrorFirst}`}</p>
     </main>
   );
 }
