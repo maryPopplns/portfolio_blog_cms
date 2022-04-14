@@ -1,4 +1,5 @@
 import './analysis.css';
+import { uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -20,8 +21,9 @@ function Analysis({ data }) {
       length,
     }));
     const errorComponents = allErrors.map(({ offset, length }, index) => {
+      const key = uuidv4();
       const text = data.body.slice(offset, offset + length);
-      return <Error text={text} />;
+      return <Error text={text} key={key} />;
     });
     // setErrorComponents(errorComponents);
 
@@ -46,8 +48,9 @@ function Analysis({ data }) {
       }
     });
     const correctComponents = allCorrect.map((array, index) => {
+      const key = uuidv4();
       const joined = array.join('');
-      return <Correct text={joined} />;
+      return <Correct text={joined} key={key} />;
     });
 
     // setNormalComponents(normalComponents);

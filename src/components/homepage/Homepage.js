@@ -1,4 +1,5 @@
 import './homepage.css';
+import { uuidv4 } from 'uuid';
 import Post from '../post/Post';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
@@ -8,7 +9,8 @@ function Homepage() {
   const posts = useSelector((state) => state.posts.value);
 
   const postComponents = posts.map((post) => {
-    return <Post data={post} key={post._id} />;
+    const key = uuidv4();
+    return <Post data={post} key={key} />;
   });
 
   // TODO load posts upon component load
