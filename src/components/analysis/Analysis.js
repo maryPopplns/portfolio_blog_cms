@@ -8,11 +8,13 @@ function Correct({ text }) {
   return <p>{text}</p>;
 }
 function Error({ text }) {
-  return <span className='text_error'>{text}</span>;
+  return <p className='text_error'>{text}</p>;
 }
 
 function Analysis({ data }) {
   const [body, setBody] = useState();
+  const [errors, setErrors] = useState([]);
+  const [normal, setNormal] = useState([]);
 
   useEffect(() => {
     // create components from errors
@@ -46,6 +48,10 @@ function Analysis({ data }) {
         currentCorrect = [];
       }
     });
+    if (currentCorrect.length !== 0) {
+      allCorrect.push(currentCorrect);
+    }
+
     const correctComponents = allCorrect.map((array, index) => {
       const key = uuidv4();
       const joined = array.join('');

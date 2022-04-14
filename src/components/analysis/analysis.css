@@ -10,12 +10,13 @@ main.analysis {
   background-color: black;
 }
 
-span.text_error {
-  /* margin-left: 0.5rem;
-  margin-right: 0.5rem; */
-  color: red;
+div.analysis_text {
+  word-spacing: 0.125rem;
+  display: flex;
 }
 
-div.analysis_text {
-  display: flex;
+p.text_error {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  color: red;
 }

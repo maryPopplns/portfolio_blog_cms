@@ -8,8 +8,11 @@ import data from './data.json'; // TODO remove
 
 function NewPost() {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
   // TODO remove placeholder text
+  // const [body, setBody] = useState('');
+  const [body, setBody] = useState(
+    'i is enginerr. why no second sentecne being analyzed?'
+  );
   const [errors, setErrors] = useState([{}]);
   const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);
