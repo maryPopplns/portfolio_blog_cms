@@ -77,11 +77,11 @@ div.error_description_container {
 }
 div.error_description_close {
   height: 0rem;
-  visibility: hidden;
+  display: none;
 }
 div.error_description_open {
   height: auto;
-  visibility: visible;
+  display: block;
 }
 
 div.error_container,
