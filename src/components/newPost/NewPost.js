@@ -32,7 +32,6 @@ function NewPost() {
   }
 
   function analyzeHandler() {
-    //  TODO requires login
     const postBody = urlencoded({ body });
     fetch('https://whispering-depths-29284.herokuapp.com/grammar', {
       method: 'POST',
@@ -79,10 +78,12 @@ function NewPost() {
             ></textarea>
           </div>
           <div className='new_post_button_container'>
-            <button type='button' onClick={analyzeHandler}>
+            <button type='button' onClick={body ? analyzeHandler : undefined}>
               analyze
             </button>
-            <button type='submit'>submit</button>
+            <button disabled={!body && !title} type='submit'>
+              submit
+            </button>
           </div>
         </form>
       </main>
