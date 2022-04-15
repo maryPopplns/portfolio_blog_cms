@@ -2,33 +2,11 @@ import './analysis.css';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import ErrorText from '../errorText/ErrorText';
 
-// text components
+// text component
 function CorrectText({ text }) {
   return <span className='correct_text'>{text}</span>;
-}
-function ErrorText({ data }) {
-  const { description, bad, better, text } = data;
-  const [errorText, setErrorText] = useState(text);
-  const [modalShowing, setShowingModal] = useState(false);
-  return (
-    <>
-      <span
-        className='error_text'
-        onClick={() => setShowingModal((prev) => !prev)}
-      >
-        {errorText}
-        <div
-          className={
-            modalShowing ? 'showing_error_modal' : 'hidden_error_modal'
-          }
-        >
-          <h2>hola</h2>
-          {/* <h2>{description.en}</h2> */}
-        </div>
-      </span>
-    </>
-  );
 }
 
 function Analysis({ data }) {
@@ -36,10 +14,10 @@ function Analysis({ data }) {
 
   useEffect(() => {
     const errorComponents = data.errors.map((error) => {
-      const { offset, length, description, bad, better } = error;
+      const { offset, length, better } = error;
       const key = uuidv4();
       const text = data.body.slice(offset, offset + length);
-      return <ErrorText key={key} data={{ description, bad, better, text }} />;
+      return <ErrorText key={key} data={{ better, text }} />;
     });
     // create components from correct text
     let errorIndexes = [];
