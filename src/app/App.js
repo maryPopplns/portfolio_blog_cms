@@ -20,16 +20,16 @@ function App() {
 
   return (
     <>
-      {/* {!loggedIn && <Login />}
-      {loggedIn && ( */}
-      <Routes>
-        <Route path='/' element={<Navbar />}>
-          <Route index element={<Homepage />} />
-          <Route path='new' element={<NewPost />} />
-          {/* <Route path=':postID' element={} /> */}
-        </Route>
-      </Routes>
-      {/* )} */}
+      {!loggedIn && <Login />}
+      {loggedIn && (
+        <Routes>
+          <Route path='/' element={<Navbar />}>
+            <Route index element={<Homepage />} />
+            <Route path='new' element={<NewPost />} />
+            {/* <Route path=':postID' element={} /> */}
+          </Route>
+        </Routes>
+      )}
     </>
   );
 }
