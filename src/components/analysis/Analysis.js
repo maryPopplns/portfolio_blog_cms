@@ -7,52 +7,24 @@ import { useEffect } from 'react';
 function CorrectText({ text }) {
   return <span className='correct_text'>{text}</span>;
 }
-function ErrorText({ text }) {
-  return <span className='error_text'>{text}</span>;
-}
-// error component
-function Error({ error, index }) {
-  const { description, bad, better } = error;
-  const [isOpen, setIsOpen] = useState(false);
+function ErrorText({ data }) {
+  const { description, bad, better, text } = data;
   return (
-    <li className='error'>
-      <div
-        className='open_error_button'
-        onClick={() => setIsOpen((prev) => !prev)}
-      >
-        {index + 1}
-      </div>
-      <div
-        className={`error_description_container ${
-          isOpen ? 'error_description_open' : 'error_description_close'
-        }`}
-      >
-        <div>{description.en}</div>
-        <div>Error: {bad}</div>
-        <div>
-          {better.length === 1 ? 'suggestion' : 'Suggestions'}: [{' '}
-          {better.join(', ')} ]
-        </div>
-      </div>
-    </li>
+    <span className='error_text' onClick={() => console.log('clicked')}>
+      {text}
+    </span>
   );
 }
 
 function Analysis({ data }) {
-  const [spellingErrors, setSpellingErrors] = useState([]);
-  const [grammarErrors, setGrammarErrors] = useState([]);
   const [body, setBody] = useState([]);
 
   useEffect(() => {
-    // create components from errors
-    const allErrors = data.errors.map(({ offset, length }) => ({
-      offset,
-      length,
-    }));
-    const errorComponents = allErrors.map(({ offset, length }, index) => {
+    const errorComponents = data.errors.map((error) => {
+      const { offset, length, description, bad, better } = error;
       const key = uuidv4();
       const text = data.body.slice(offset, offset + length);
-      return <ErrorText text={text} key={key} />;
+      return <ErrorText key={key} data={{ description, bad, better, text }} />;
     });
     // create components from correct text
     let errorIndexes = [];
@@ -104,39 +76,12 @@ function Analysis({ data }) {
         .flat();
       setBody(components);
     }
-
-    const spellingErrors = data.errors.filter(
-      (error) => error.type === 'spelling'
-    );
-    const grammarErrors = data.errors.filter(
-      (error) => error.type === 'grammar'
-    );
-    const spellingErrorComponents = spellingErrors.map((error, index) => {
-      const key = uuidv4();
-      return <Error error={error} key={key} index={index} />;
-    });
-    const grammarErrorComponents = grammarErrors.map((error, index) => {
-      const key = uuidv4();
-      return <Error error={error} key={key} index={index} />;
-    });
-    setSpellingErrors(spellingErrorComponents);
-    setGrammarErrors(grammarErrorComponents);
   }, [data]);
 
   return (
     <main className='analysis'>
       <div className='analysis_text'>{body}</div>
       <hr className='analysis_suggestions_divisor' />
-      <div className='error_list_container'>
-        <div className='error_container spelling_errors'>
-          <h2 className='error_header'>spelling errors</h2>
-          <ul>{spellingErrors}</ul>
-        </div>
-        <div className='error_container grammar_errors'>
-          <h2 className='error_header'>grammar errors</h2>
-          <ul>{grammarErrors}</ul>
-        </div>
-      </div>
     </main>
   );
 }
