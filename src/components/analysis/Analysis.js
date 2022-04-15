@@ -5,9 +5,7 @@ import { useEffect } from 'react';
 import ErrorText from '../errorText/ErrorText';
 
 // text component
-function CorrectText({ text }) {
-  return <span className='correct_text'>{text}</span>;
-}
+const CorrectText = ({ text }) => <span className='correct_text'>{text}</span>;
 
 function Analysis({ data }) {
   const [body, setBody] = useState([]);
