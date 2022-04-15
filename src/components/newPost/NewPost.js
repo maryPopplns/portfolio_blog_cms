@@ -8,6 +8,9 @@ import data from './data.json'; // TODO remove
 
 function NewPost() {
   const [title, setTitle] = useState('');
+  // const [body, setBody] = useState(
+  //   'i is enginerr. why no second sentecne being analyzed?'
+  // );
   const [body, setBody] = useState('');
   const [errors, setErrors] = useState([{}]);
   const [analysis, setAnalysis] = useState(false);
@@ -46,6 +49,9 @@ function NewPost() {
         setAnalysis(true);
         setErrors(errors);
       });
+
+    // setAnalysis(true);
+    // setErrors(data.errors);
   }
 
   return (

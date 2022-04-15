@@ -9,10 +9,25 @@ function CorrectText({ text }) {
 }
 function ErrorText({ data }) {
   const { description, bad, better, text } = data;
+  const [errorText, setErrorText] = useState(text);
+  const [modalShowing, setShowingModal] = useState(false);
   return (
-    <span className='error_text' onClick={() => console.log('clicked')}>
-      {text}
-    </span>
+    <>
+      <span
+        className='error_text'
+        onClick={() => setShowingModal((prev) => !prev)}
+      >
+        {errorText}
+        <div
+          className={
+            modalShowing ? 'showing_error_modal' : 'hidden_error_modal'
+          }
+        >
+          <h2>hola</h2>
+          {/* <h2>{description.en}</h2> */}
+        </div>
+      </span>
+    </>
   );
 }
 
