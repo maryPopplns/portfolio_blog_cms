@@ -10,7 +10,6 @@ function CorrectText({ text }) {
 function ErrorText({ text }) {
   return <p className='error_text'>{text}</p>;
 }
-
 // error component
 function Error({ error, index }) {
   const { description, bad, better } = error;
@@ -29,8 +28,11 @@ function Error({ error, index }) {
         }`}
       >
         <div>{description.en}</div>
-        <div>error: {bad}</div>
-        <div>suggestions: {better}</div>
+        <div>Error: {bad}</div>
+        <div>
+          {better.length === 1 ? 'suggestion' : 'Suggestions'}: [{' '}
+          {better.join(', ')} ]
+        </div>
       </div>
     </li>
   );
