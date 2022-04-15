@@ -3,7 +3,16 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 // choice component
-const Choice = ({ choice }) => <li className='better_choice'>{choice}</li>;
+const Choice = ({ choice, setErrorText }) => (
+  <li
+    className='better_choice'
+    onClick={() => {
+      setErrorText(choice);
+    }}
+  >
+    {choice}
+  </li>
+);
 
 function ErrorText({ data }) {
   const { better, text } = data;
@@ -15,7 +24,7 @@ function ErrorText({ data }) {
     better &&
       setChoiceComponents(
         better.map((choice, i) => {
-          return <Choice choice={choice} key={i} />;
+          return <Choice choice={choice} key={i} setErrorText={setErrorText} />;
         })
       );
   }, [better]);
