@@ -8,10 +8,7 @@ import data from './data.json'; // TODO remove
 
 function NewPost() {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState(
-    'i is enginerr. why no second sentecne being analyzed?'
-  );
-  // const [body, setBody] = useState('');
+  const [body, setBody] = useState('');
   const [errors, setErrors] = useState([{}]);
   const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);
@@ -35,23 +32,20 @@ function NewPost() {
   }
 
   function analyzeHandler() {
-    // const postBody = urlencoded({ body });
-    // fetch('https://whispering-depths-29284.herokuapp.com/grammar', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //     Authorization: `Bearer ${jwtToken}`,
-    //   },
-    //   body: postBody,
-    // })
-    //   .then((result) => result.json())
-    //   .then(({ errors }) => {
-    //     setAnalysis(true);
-    //     setErrors(errors);
-    //   });
-
-    setAnalysis(true);
-    setErrors(data.errors);
+    const postBody = urlencoded({ body });
+    fetch('https://whispering-depths-29284.herokuapp.com/grammar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      body: postBody,
+    })
+      .then((result) => result.json())
+      .then(({ errors }) => {
+        setAnalysis(true);
+        setErrors(errors);
+      });
   }
 
   return (
