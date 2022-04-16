@@ -8,25 +8,37 @@ import ErrorText from '../errorText/ErrorText';
 const CorrectText = ({ text }) => <span className='correct_text'>{text}</span>;
 
 function Analysis({ data }) {
-  const [body, setBody] = useState([]);
+  const { errors, body, setBody, setAnalysis } = data;
+  const [bodyText, setBodyText] = useState([]);
+
+  function saveHandler() {
+    const analysisText = Array.from(
+      document.getElementsByClassName('analysis_text')
+    )[0].innerText;
+    setAnalysis(false);
+    setBody(analysisText);
+  }
+  function cancelHandler() {
+    setAnalysis(false);
+  }
 
   useEffect(() => {
-    const errorComponents = data.errors.map((error) => {
+    const errorComponents = errors.map((error) => {
       const { offset, length, better } = error;
       const key = uuidv4();
-      const text = data.body.slice(offset, offset + length);
+      const text = body.slice(offset, offset + length);
       return <ErrorText key={key} data={{ better, text }} />;
     });
     // create components from correct text
     let errorIndexes = [];
-    data.errors.forEach(({ offset, length }) => {
+    errors.forEach(({ offset, length }) => {
       for (let i = offset; i < offset + length; i++) {
         errorIndexes.push(i);
       }
     });
     let allCorrect = [];
     let currentCorrect = [];
-    const allTextSplit = data.body.split('');
+    const allTextSplit = body.split('');
     allTextSplit.forEach((letter, index) => {
       if (!errorIndexes.includes(index)) {
         currentCorrect.push(letter);
@@ -45,7 +57,7 @@ function Analysis({ data }) {
       return <CorrectText text={joined} key={key} />;
     });
     // combine arrays
-    const isErrorFirst = data.errors[0].offset === 0;
+    const isErrorFirst = errors[0].offset === 0;
     if (isErrorFirst) {
       const components = errorComponents
         .map((component, index) => {
@@ -55,7 +67,7 @@ function Analysis({ data }) {
           return component;
         })
         .flat();
-      setBody(components);
+      setBodyText(components);
     } else {
       const components = correctComponents
         .map((component, index) => {
@@ -65,17 +77,21 @@ function Analysis({ data }) {
           return component;
         })
         .flat();
-      setBody(components);
+      setBodyText(components);
     }
-  }, [data]);
+  }, [body, errors]);
 
   return (
     <main className='analysis'>
-      <div className='analysis_text'>{body}</div>
+      <div className='analysis_text'>{bodyText}</div>
       <hr className='analysis_suggestions_divisor' />
       <div className='analysis_button_container'>
-        <button className='analysis_button'>save</button>
-        <button className='analysis_button'>cancel</button>
+        <button className='analysis_button' onClick={saveHandler}>
+          save
+        </button>
+        <button className='analysis_button' onClick={cancelHandler}>
+          cancel
+        </button>
       </div>
     </main>
   );

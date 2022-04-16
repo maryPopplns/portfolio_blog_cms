@@ -93,7 +93,7 @@ function NewPost() {
           </div>
         </form>
       </main>
-      {analysis && <Analysis data={{ errors, body }} />}
+      {analysis && <Analysis data={{ errors, body, setBody, setAnalysis }} />}
     </>
   );
 }
