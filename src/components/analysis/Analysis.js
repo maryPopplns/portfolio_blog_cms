@@ -73,6 +73,10 @@ function Analysis({ data }) {
     <main className='analysis'>
       <div className='analysis_text'>{body}</div>
       <hr className='analysis_suggestions_divisor' />
+      <div className='analysis_button_container'>
+        <button className='analysis_button'>save</button>
+        <button className='analysis_button'>cancel</button>
+      </div>
     </main>
   );
 }

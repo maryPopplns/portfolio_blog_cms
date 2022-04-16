@@ -42,7 +42,6 @@ function ErrorText({ data }) {
           }
         >
           <ul className='better_choices'>{choiceComponents}</ul>
-          {/* <div>hela</div> */}
         </div>
       </span>
     </>
