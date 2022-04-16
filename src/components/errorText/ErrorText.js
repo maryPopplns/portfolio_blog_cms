@@ -35,7 +35,6 @@ function ErrorText({ data }) {
     <>
       <span
         className={currentText === text ? 'error_text' : 'corrected_text'}
-        // className='error_text'
         onClick={() => setShowingModal((prev) => !prev)}
       >
         {currentText}
