@@ -16,7 +16,7 @@ const Choice = ({ choice, setErrorText }) => (
 
 function ErrorText({ data }) {
   const { better, text } = data;
-  const [errorText, setErrorText] = useState(text);
+  const [currentText, setCurrentText] = useState(text);
   const [modalShowing, setShowingModal] = useState(false);
   const [choiceComponents, setChoiceComponents] = useState([]);
 
@@ -24,7 +24,9 @@ function ErrorText({ data }) {
     better &&
       setChoiceComponents(
         better.map((choice, i) => {
-          return <Choice choice={choice} key={i} setErrorText={setErrorText} />;
+          return (
+            <Choice choice={choice} key={i} setErrorText={setCurrentText} />
+          );
         })
       );
   }, [better]);
@@ -32,10 +34,11 @@ function ErrorText({ data }) {
   return (
     <>
       <span
-        className='error_text'
+        className={currentText === text ? 'error_text' : 'corrected_text'}
+        // className='error_text'
         onClick={() => setShowingModal((prev) => !prev)}
       >
-        {errorText}
+        {currentText}
         <div
           className={
             modalShowing ? 'showing_error_modal' : 'hidden_error_modal'

@@ -1,8 +1,10 @@
 span.error_text {
   position: relative;
-  margin-left: 0.2rem;
-  margin-right: 0.2rem;
   color: red;
+}
+span.corrected_text {
+  position: relative;
+  color: green;
 }
 div.hidden_error_modal {
   display: none;

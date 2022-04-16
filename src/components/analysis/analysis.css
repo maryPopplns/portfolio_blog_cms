@@ -51,9 +51,7 @@ hr.analysis_suggestions_divisor {
 }
 
 div.analysis_button_container {
-  position: fixed;
-  bottom: 0;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 button.analysis_button {
