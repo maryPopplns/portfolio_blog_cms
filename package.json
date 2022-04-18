@@ -43,6 +43,7 @@
   "jest": {
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/store",
+      "<rootDir>/src/helpers",
       "<rootDir>/src/reportWebVitals"
     ]
   }
