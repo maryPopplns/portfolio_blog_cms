@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 import urlencoded from '../../helpers/urlencoded';
 import Analysis from '../analysis/Analysis';
 
-import data from './data.json'; // TODO remove
-
 function NewPost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');

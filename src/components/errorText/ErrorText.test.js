@@ -1,8 +1,4 @@
-import store from '../../store/store';
-import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-
 import ErrorText from './ErrorText';
 
 describe('Error Text', () => {

@@ -2,8 +2,9 @@ import './analysis.css';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import ErrorText from '../errorText/ErrorText';
 
+// error component
+import ErrorText from '../errorText/ErrorText';
 // text component
 const CorrectText = ({ text }) => <span className='correct_text'>{text}</span>;
 
@@ -23,6 +24,7 @@ function Analysis({ data }) {
   }
 
   useEffect(() => {
+    // error components
     const errorComponents = errors.map((error) => {
       const { offset, length, better } = error;
       const key = uuidv4();
