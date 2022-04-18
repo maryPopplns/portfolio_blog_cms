@@ -1,11 +1,13 @@
-import store from '../../store/store';
-import { Provider } from 'react-redux';
 import { rest } from 'msw';
+import store from '../../store/store';
 import { setupServer } from 'msw/node';
-import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 import data from '../testData.json';
+import Navbar from '../navbar/Navbar';
+import Homepage from '../homepage/Homepage';
 import NewPost from './NewPost';
 
 describe('NewPost', () => {
@@ -16,9 +18,9 @@ describe('NewPost', () => {
     }
   );
   const submitResponse = rest.post(
-    'https://whispering-depths-29284.herokuapp.com/grammar',
+    'https://whispering-depths-29284.herokuapp.com/post',
     (req, res, ctx) => {
-      return res({ message: 'post created' });
+      return res(ctx.json({ message: 'post created' }));
     }
   );
   const handlers = [analyzeResponse, submitResponse];
@@ -79,5 +81,39 @@ describe('NewPost', () => {
       },
       { timeout: 10000 }
     );
+  });
+  test('submit routes to homepage', async () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/new']}>
+          <Routes>
+            <Route path='/' element={<Navbar />}>
+              <Route index element={<Homepage />} />
+              <Route path='new' element={<NewPost />} />
+            </Route>
+          </Routes>
+        </MemoryRouter>
+      </Provider>
+    );
+
+    // write in textbox
+    fireEvent.change(screen.getByRole('textbox', { name: 'title' }), {
+      target: { value: 'title of the new post' },
+    });
+    fireEvent.change(screen.getByRole('textbox', { name: 'body' }), {
+      target: { value: 'body of the new post' },
+    });
+
+    fireEvent(
+      screen.getByRole('button', { name: 'submit' }),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+    await waitFor(() => {
+      const heading = screen.getByRole('heading', { name: 'all posts' });
+      expect(heading).toBeInTheDocument();
+    });
   });
 });
