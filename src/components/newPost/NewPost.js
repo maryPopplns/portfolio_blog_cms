@@ -1,6 +1,7 @@
 import './newPost.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import urlencoded from '../../helpers/urlencoded';
 import Analysis from '../analysis/Analysis';
 
@@ -10,6 +11,7 @@ function NewPost() {
   const [errors, setErrors] = useState([{}]);
   const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);
+  let navigate = useNavigate();
 
   function formHandler(event) {
     event.preventDefault();
@@ -21,12 +23,7 @@ function NewPost() {
         Authorization: `Bearer ${jwtToken}`,
       },
       body: newPost,
-    })
-      .then((result) => result.json())
-      .then((result) => {
-        // TODO redirect to homepage
-        console.log(result);
-      });
+    }).then(() => navigate('/'));
   }
 
   function analyzeHandler() {
