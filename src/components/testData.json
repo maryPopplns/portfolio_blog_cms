@@ -1,7 +1,6 @@
 {
-  "body": "i is enginerr. why no second sentecne being analyzed?",
-  "result": true,
-  "errors": [
+  "body1": "i is enginerr. why no second sentecne being analyzed?",
+  "errors1": [
     {
       "id": "e1636898912",
       "offset": 0,
@@ -13,6 +12,42 @@
       "better": ["I"],
       "type": "spelling"
     },
+    {
+      "id": "e1242242292",
+      "offset": 2,
+      "length": 2,
+      "description": {
+        "en": "Did you mean “am” or “will be”?"
+      },
+      "bad": "is",
+      "better": ["am", "will be"],
+      "type": "grammar"
+    },
+    {
+      "id": "e679016221",
+      "offset": 5,
+      "length": 8,
+      "description": {
+        "en": "Possible spelling mistake found."
+      },
+      "bad": "enginerr",
+      "better": ["engineer"],
+      "type": "spelling"
+    },
+    {
+      "id": "e1383744372",
+      "offset": 29,
+      "length": 8,
+      "description": {
+        "en": "Possible spelling mistake found."
+      },
+      "bad": "sentecne",
+      "better": ["sentence"],
+      "type": "spelling"
+    }
+  ],
+  "body2": "I is enginerr. why no second sentecne being analyzed?",
+  "errors2": [
     {
       "id": "e1242242292",
       "offset": 2,
