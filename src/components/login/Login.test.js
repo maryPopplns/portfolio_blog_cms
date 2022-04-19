@@ -70,7 +70,7 @@ describe('Login Page', () => {
 
     expect(submitButton).toBeInTheDocument();
   });
-  test('incorrect password yields visual que', async () => {
+  test('incorrect password yields visual que/goes away after 2 seconds', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -94,7 +94,14 @@ describe('Login Page', () => {
         const updatedInput = screen.getByTestId('loginPassword');
         expect(updatedInput).toHaveClass('login_input_error');
       },
-      { timeout: 10000 }
+      { timeout: 1000 }
+    );
+    await waitFor(
+      () => {
+        const updatedInput = screen.getByTestId('loginPassword');
+        expect(updatedInput).not.toHaveClass('login_input_error');
+      },
+      { timeout: 3000 }
     );
   });
   test.skip('correct password grants access', async () => {
@@ -120,7 +127,7 @@ describe('Login Page', () => {
         const homepage = screen.getByText(/homepage/i);
         expect(homepage).toBeInTheDocument();
       },
-      { timeout: 10000 }
+      { timeout: 1000 }
     );
   });
 });
