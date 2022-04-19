@@ -7,6 +7,7 @@ import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
 import mockData from './mockData.json';
+import loginResponse from './loginResponse.json';
 import Login from './Login';
 import App from '../../app/App';
 
@@ -26,7 +27,7 @@ describe('Login Page', () => {
       const isCorrectPassword = password === '123';
       const isAuthenticated = isCorrectUser && isCorrectPassword;
       if (isAuthenticated) {
-        return res(ctx.status(200));
+        return res(ctx.json(loginResponse));
       } else {
         return res(ctx.status(401));
       }
@@ -104,7 +105,7 @@ describe('Login Page', () => {
       { timeout: 3000 }
     );
   });
-  test.skip('correct password grants access', async () => {
+  test('correct password grants access', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -122,10 +123,11 @@ describe('Login Page', () => {
     const submitButton = screen.getByRole('button', { name: /submit/i });
 
     userEvent.click(submitButton);
+
     await waitFor(
-      () => {
-        const homepage = screen.getByText(/homepage/i);
-        expect(homepage).toBeInTheDocument();
+      async () => {
+        const heading = screen.getByRole('heading', { name: 'all posts' });
+        expect(heading).toBeInTheDocument();
       },
       { timeout: 1000 }
     );
