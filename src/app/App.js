@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
+import { useEffect, useState } from 'react';
 import Login from '../components/login/Login';
 import { Routes, Route } from 'react-router-dom';
 import { setPosts } from '../store/slices/posts';
 import Navbar from '../components/navbar/Navbar';
-import Homepage from '../components/homepage/Homepage';
 import NewPost from '../components/newPost/NewPost';
+import { useSelector, useDispatch } from 'react-redux';
+import Homepage from '../components/homepage/Homepage';
 import IndividualPost from '../components/individualPost/IndividualPost';
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
           <Route path='/' element={<Navbar />}>
             <Route index element={<Homepage />} />
             <Route path='new' element={<NewPost />} />
-            <Route path=':postID' element={IndividualPost} />
+            <Route path=':postID' element={<IndividualPost />} />
           </Route>
         </Routes>
       )}

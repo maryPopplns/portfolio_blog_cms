@@ -1,9 +1,9 @@
 import './newPost.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import Analysis from '../analysis/Analysis';
 import { useNavigate } from 'react-router-dom';
 import urlencoded from '../../helpers/urlencoded';
-import Analysis from '../analysis/Analysis';
 
 function NewPost() {
   const [title, setTitle] = useState('');
