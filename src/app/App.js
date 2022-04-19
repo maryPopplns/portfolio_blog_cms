@@ -13,7 +13,7 @@ function App() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch('https://protected-beyond-87972.herokuapp.com/post')
+    fetch('https://whispering-depths-29284.herokuapp.com/post')
       .then((result) => result.json())
       .then((posts) => dispatch(setPosts(posts)));
   }, [dispatch]);

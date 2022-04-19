@@ -1,0 +1,65 @@
+[
+  {
+    "_id": "6255f41da1057c2ee9e8a098",
+    "title": "post 1",
+    "body": "body",
+    "likes": 0,
+    "comments": [],
+    "date": "2022-04-12T21:50:21.550Z",
+    "__v": 0
+  },
+  {
+    "_id": "6255f41fa1057c2ee9e8a09b",
+    "title": "post 2",
+    "body": "body",
+    "likes": 0,
+    "comments": [],
+    "date": "2022-04-12T21:50:23.318Z",
+    "__v": 0
+  },
+  {
+    "_id": "6255f420a1057c2ee9e8a09e",
+    "title": "post 3",
+    "body": "body",
+    "likes": 0,
+    "comments": [],
+    "date": "2022-04-12T21:50:24.765Z",
+    "__v": 0
+  },
+  {
+    "_id": "6255f423a1057c2ee9e8a0a1",
+    "title": "post 4",
+    "body": "body",
+    "likes": 0,
+    "comments": [],
+    "date": "2022-04-12T21:50:27.506Z",
+    "__v": 0
+  },
+  {
+    "_id": "6255f425a1057c2ee9e8a0a4",
+    "title": "post 5",
+    "body": "body",
+    "likes": 0,
+    "comments": [],
+    "date": "2022-04-12T21:50:29.219Z",
+    "__v": 0
+  },
+  {
+    "_id": "6255f500bb5764ff94d78dc5",
+    "title": "asdf",
+    "body": "asdfasf",
+    "likes": 0,
+    "comments": [],
+    "date": "2022-04-12T21:54:08.960Z",
+    "__v": 0
+  },
+  {
+    "_id": "6256e0abf1f9cd1fde5d5e55",
+    "title": "sdfasdf",
+    "body": "sdaf",
+    "likes": 0,
+    "comments": [],
+    "date": "2022-04-13T14:39:39.971Z",
+    "__v": 0
+  }
+]

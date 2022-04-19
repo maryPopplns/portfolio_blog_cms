@@ -10,7 +10,6 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorClass, setErrorClass] = useState('');
-
   const dispatch = useDispatch();
 
   function loginHandler(event) {
