@@ -7,6 +7,7 @@ import { setPosts } from '../store/slices/posts';
 import Navbar from '../components/navbar/Navbar';
 import Homepage from '../components/homepage/Homepage';
 import NewPost from '../components/newPost/NewPost';
+import IndividualPost from '../components/individualPost/IndividualPost';
 
 function App() {
   const loggedIn = useSelector((state) => state.loggedIn.value);
@@ -26,7 +27,7 @@ function App() {
           <Route path='/' element={<Navbar />}>
             <Route index element={<Homepage />} />
             <Route path='new' element={<NewPost />} />
-            {/* <Route path=':postID' element={} /> */}
+            <Route path=':postID' element={IndividualPost} />
           </Route>
         </Routes>
       )}
