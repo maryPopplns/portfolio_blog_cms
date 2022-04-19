@@ -1,8 +1,8 @@
 import './individualPost.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Analysis from '../analysis/Analysis';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import urlencoded from '../../helpers/urlencoded';
 
 function IndividualPost() {
@@ -11,20 +11,31 @@ function IndividualPost() {
   const [errors, setErrors] = useState([{}]);
   const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);
+  const posts = useSelector((state) => state.posts.value);
   let navigate = useNavigate();
+  let { postID } = useParams();
+
+  useEffect(() => {
+    const { title, body, comments } = posts.filter(
+      (post) => post._id === postID
+    )[0];
+    setTitle(title);
+    setBody(body);
+  }, [posts, postID]);
 
   function formHandler(event) {
-    console.log('form handler');
-    // event.preventDefault();
-    // const newPost = urlencoded({ title, body });
-    // fetch('https://whispering-depths-29284.herokuapp.com/post', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //     Authorization: `Bearer ${jwtToken}`,
-    //   },
-    //   body: newPost,
-    // }).then(() => navigate('/')).catch((error)=> console.log(error))
+    event.preventDefault();
+    const newPost = urlencoded({ title, body });
+    fetch(`https://whispering-depths-29284.herokuapp.com/post/${postID}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      body: newPost,
+    })
+      .then(() => navigate('/'))
+      .catch((error) => console.log(error));
   }
 
   function analyzeHandler() {
