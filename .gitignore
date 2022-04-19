@@ -3,7 +3,6 @@
 # jwt
 ./src/components/login/loginResponse.json
 
-
 # dependencies
 /node_modules
 /.pnp

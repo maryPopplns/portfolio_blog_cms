@@ -42,6 +42,7 @@
   },
   "jest": {
     "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.js",
       "<rootDir>/src/store",
       "<rootDir>/src/helpers",
       "<rootDir>/src/reportWebVitals"
