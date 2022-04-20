@@ -28,6 +28,7 @@ nav.global_navbar ul li {
   width: 50%;
   border: 4px solid var(--blue);
   border-radius: 0.25rem;
+  background-color: black;
 }
 nav.global_navbar ul li a {
   display: flex;

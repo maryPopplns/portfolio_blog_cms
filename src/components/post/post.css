@@ -17,6 +17,8 @@
 /* global */
 a.homepage_post_link {
   text-decoration: none;
+  word-wrap: break-word;
+  hyphens: auto;
   color: var(--orange);
 }
 div.homepage_post_link_container {

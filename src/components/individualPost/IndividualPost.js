@@ -1,14 +1,29 @@
 import './individualPost.css';
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import Analysis from '../analysis/Analysis';
-import { useNavigate, useParams } from 'react-router-dom';
 import urlencoded from '../../helpers/urlencoded';
+import { useNavigate, useParams } from 'react-router-dom';
+import trashcan from './trashcan.svg';
+
+function Comment({ comment, id }) {
+  return (
+    <li className='individual_post_comment'>
+      <p className='individual_post_comment_body'>{comment}</p>
+      <img
+        src={trashcan}
+        className='remove_individual_post_comment_icon'
+        alt='remove_comment_icon'
+      />
+    </li>
+  );
+}
 
 function IndividualPost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [errors, setErrors] = useState([{}]);
+  const [postComments, setPostComments] = useState([]);
   const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);
   const posts = useSelector((state) => state.posts.value);
@@ -19,8 +34,12 @@ function IndividualPost() {
     const { title, body, comments } = posts.filter(
       (post) => post._id === postID
     )[0];
+    const commentComponents = comments.map(({ comment, _id }) => {
+      return <Comment comment={comment} key={_id} id={_id} />;
+    });
     setTitle(title);
     setBody(body);
+    setPostComments(commentComponents);
   }, [posts, postID]);
 
   function formHandler(event) {
@@ -93,6 +112,7 @@ function IndividualPost() {
             </button>
           </div>
         </form>
+        <ul className='comments_container'>{postComments}</ul>
       </main>
       {analysis && <Analysis data={{ errors, body, setBody, setAnalysis }} />}
     </>
