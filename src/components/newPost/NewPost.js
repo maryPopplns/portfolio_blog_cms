@@ -23,7 +23,9 @@ function NewPost() {
         Authorization: `Bearer ${jwtToken}`,
       },
       body: newPost,
-    }).then(() => navigate('/'));
+    })
+      .then(() => navigate('/'))
+      .catch((error) => console.log(error));
   }
 
   function analyzeHandler() {
@@ -38,9 +40,12 @@ function NewPost() {
     })
       .then((result) => result.json())
       .then(({ errors }) => {
-        setAnalysis(true);
-        setErrors(errors);
-      });
+        if (errors.length !== 0) {
+          setErrors(errors);
+          setAnalysis(true);
+        }
+      })
+      .catch((error) => console.log(error));
   }
 
   return (

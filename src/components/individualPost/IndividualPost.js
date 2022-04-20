@@ -11,6 +11,7 @@ function Comment({ comment, id }) {
     <li className='individual_post_comment'>
       <p className='individual_post_comment_body'>{comment}</p>
       <img
+        onClick={() => console.log('clicked')}
         src={trashcan}
         className='remove_individual_post_comment_icon'
         alt='remove_comment_icon'
@@ -69,8 +70,10 @@ function IndividualPost() {
     })
       .then((result) => result.json())
       .then(({ errors }) => {
-        setAnalysis(true);
-        setErrors(errors);
+        if (errors.length !== 0) {
+          setErrors(errors);
+          setAnalysis(true);
+        }
       })
       .catch((error) => console.log(error));
   }
