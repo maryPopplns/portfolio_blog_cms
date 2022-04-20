@@ -7,8 +7,8 @@ import urlencoded from '../../helpers/urlencoded';
 import './login.css';
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('spencer');
+  const [password, setPassword] = useState('123');
   const [errorClass, setErrorClass] = useState('');
   const dispatch = useDispatch();
 
