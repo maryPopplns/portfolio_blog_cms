@@ -4,44 +4,41 @@ import { useEffect, useState } from 'react';
 import Analysis from '../analysis/Analysis';
 import urlencoded from '../../helpers/urlencoded';
 import { useNavigate, useParams } from 'react-router-dom';
-import trashcan from './trashcan.svg';
-
-function Comment({ comment, id }) {
-  return (
-    <li className='individual_post_comment'>
-      <p className='individual_post_comment_body'>{comment}</p>
-      <img
-        onClick={() => console.log('clicked')}
-        src={trashcan}
-        className='remove_individual_post_comment_icon'
-        alt='remove_comment_icon'
-      />
-    </li>
-  );
-}
+import Comment from '../comment/Comment';
 
 function IndividualPost() {
-  const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [title, setTitle] = useState('');
   const [errors, setErrors] = useState([{}]);
-  const [postComments, setPostComments] = useState([]);
   const [analysis, setAnalysis] = useState(false);
-  const jwtToken = useSelector((state) => state.jwtToken.value);
+  const [allComments, setAllComments] = useState([]);
   const posts = useSelector((state) => state.posts.value);
+  const jwtToken = useSelector((state) => state.jwtToken.value);
   let navigate = useNavigate();
   let { postID } = useParams();
+  const {
+    title: postTitle,
+    body: postBody,
+    comments,
+  } = posts.filter((post) => post._id === postID)[0];
 
   useEffect(() => {
-    const { title, body, comments } = posts.filter(
-      (post) => post._id === postID
-    )[0];
-    const commentComponents = comments.map(({ comment, _id }) => {
-      return <Comment comment={comment} key={_id} id={_id} />;
-    });
-    setTitle(title);
-    setBody(body);
-    setPostComments(commentComponents);
-  }, [posts, postID]);
+    setAllComments(comments);
+    setBody(postBody);
+    setTitle(postTitle);
+  }, [postTitle, postBody, comments]);
+
+  const commentComponents = allComments.map(({ comment, _id }) => {
+    return (
+      <Comment
+        comment={comment}
+        key={_id}
+        id={_id}
+        allComments={allComments}
+        setAllComments={setAllComments}
+      />
+    );
+  });
 
   function formHandler(event) {
     event.preventDefault();
@@ -115,7 +112,7 @@ function IndividualPost() {
             </button>
           </div>
         </form>
-        <ul className='comments_container'>{postComments}</ul>
+        <ul className='comments_container'>{commentComponents}</ul>
       </main>
       {analysis && <Analysis data={{ errors, body, setBody, setAnalysis }} />}
     </>

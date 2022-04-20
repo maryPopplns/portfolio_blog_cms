@@ -172,7 +172,4 @@ img.remove_individual_post_comment_icon:hover {
   .individual_post input {
     font-size: 1.4rem;
   }
-  p.individual_post_comment_body {
-    width: 800px;
-  }
 }
