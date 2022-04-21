@@ -77,6 +77,20 @@ function IndividualPost() {
       .catch((error) => console.log(error));
   }
 
+  function deleteHandler(event) {
+    event.preventDefault();
+    fetch(`https://whispering-depths-29284.herokuapp.com/post/${postID}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      body: postBody,
+    })
+      .then((result) => navigate('/'))
+      .catch((error) => console.log(error));
+  }
+
   return (
     <>
       <main className='individual_post'>
@@ -132,8 +146,15 @@ function IndividualPost() {
         <div className='delete_modal'>
           <h2>Delete?</h2>
           <div>
-            <button>delete</button>
-            <button>cancel</button>
+            <button onClick={deleteHandler}>delete</button>
+            <button
+              onClick={(event) => {
+                event.preventDefault();
+                setDeleteModal(false);
+              }}
+            >
+              cancel
+            </button>
           </div>
         </div>
       )}

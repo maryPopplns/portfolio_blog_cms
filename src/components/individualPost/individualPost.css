@@ -136,6 +136,7 @@ div.delete_modal button {
   padding: 0.5rem 1rem;
   border: 2px solid var(--blue);
   border-radius: 0.25rem;
+  cursor: pointer;
   background-color: black;
   text-transform: uppercase;
 }
