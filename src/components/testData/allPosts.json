@@ -19,11 +19,13 @@
   },
   {
     "_id": "6260740fc3125c4a6d10c5da",
-    "__v": 0,
+    "title": "post title",
+    "body": "post body",
+    "likes": 0,
     "comments": [
       {
         "_id": "6260c83d0af77f766f04879d",
-        "comment": "this comment is going to be really long. this will hopefully show what it will look like when the text needs to wrap for the mobile view. second comment.",
+        "comment": "this comment is going to be really long. this will hopefully show what it will look like when the text needs to wrap for the mobile view. first comment.",
         "likes": 0,
         "post": "6260740fc3125c4a6d10c5da",
         "user": "6260907da456ced03c9415e9",
@@ -41,7 +43,7 @@
       },
       {
         "_id": "6260c85c0af77f766f0487a7",
-        "comment": "this comment is going to be really long. this will hopefully show what it will look like when the text needs to wrap for the mobile view. second comment.",
+        "comment": "this comment is going to be really long. this will hopefully show what it will look like when the text needs to wrap for the mobile view. third comment.",
         "likes": 0,
         "post": "6260740fc3125c4a6d10c5da",
         "user": "6260907da456ced03c9415e9",
@@ -50,7 +52,7 @@
       },
       {
         "_id": "6260c85e0af77f766f0487ac",
-        "comment": "this comment is going to be really long. this will hopefully show what it will look like when the text needs to wrap for the mobile view. second comment.",
+        "comment": "this comment is going to be really long. this will hopefully show what it will look like when the text needs to wrap for the mobile view. fourth comment.",
         "likes": 0,
         "post": "6260740fc3125c4a6d10c5da",
         "user": "6260907da456ced03c9415e9",
@@ -59,6 +61,6 @@
       }
     ],
     "date": "2022-04-21T02:58:05.817Z",
-    "likes": 0
+    "__v": 0
   }
 ]

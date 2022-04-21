@@ -29,19 +29,6 @@ function IndividualPost() {
     setTitle(postTitle);
   }, [postTitle, postBody, comments]);
 
-  const commentComponents = allComments.map(({ comment, _id }) => {
-    return (
-      <Comment
-        comment={comment}
-        key={_id}
-        id={_id}
-        postID={postID}
-        allComments={allComments}
-        setAllComments={setAllComments}
-      />
-    );
-  });
-
   function formHandler(event) {
     event.preventDefault();
     const newPost = urlencoded({ title, body });
@@ -90,6 +77,19 @@ function IndividualPost() {
       .then((result) => navigate('/'))
       .catch((error) => console.log(error));
   }
+
+  const commentComponents = allComments.map(({ comment, _id }) => {
+    return (
+      <Comment
+        comment={comment}
+        key={_id}
+        id={_id}
+        postID={postID}
+        allComments={allComments}
+        setAllComments={setAllComments}
+      />
+    );
+  });
 
   return (
     <>

@@ -2,18 +2,17 @@ import { rest } from 'msw';
 import store from '../../store/store';
 import { Provider } from 'react-redux';
 import { setupServer } from 'msw/node';
-import { MemoryRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+
+import allPosts from '../testData/allPosts.json';
 import Comment from './Comment';
-import allPosts from './allPosts.json';
 
 const postID = allPosts[2]._id;
 const allComments = allPosts[2].comments;
 const commentID = allPosts[2].comments[0]._id;
 const comment = allPosts[2].comments[0].comment;
 
-describe('Login Page', () => {
+describe('comment', () => {
   const deleteComment = rest.delete(
     `https://whispering-depths-29284.herokuapp.com/post/comment/${postID}/${commentID}`,
     (req, res, ctx) => {

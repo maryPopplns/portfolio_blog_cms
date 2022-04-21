@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
-import allPosts from './allPosts.json';
-import data from '../testData.json';
+import allPosts from '../testData/allPosts.json';
+import data from '../testData/grammarData.json';
 import Navbar from '../navbar/Navbar';
 import Homepage from '../homepage/Homepage';
 import NewPost from './NewPost';
@@ -68,7 +68,6 @@ describe('NewPost', () => {
       </Provider>
     );
 
-    // write in textbox
     fireEvent.change(screen.getByRole('textbox', { name: 'body' }), {
       target: { value: 'body of the new post' },
     });
@@ -103,7 +102,6 @@ describe('NewPost', () => {
       </Provider>
     );
 
-    // write in textbox
     fireEvent.change(screen.getByRole('textbox', { name: 'title' }), {
       target: { value: 'title of the new post' },
     });

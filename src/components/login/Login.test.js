@@ -6,13 +6,13 @@ import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
-import loginResponse from './loginResponse.json';
-import mockData from './mockData.json';
+import loginResponse from '../testData/loginResponse.json';
+import mockData from '../testData/allPosts.json';
 import Login from './Login';
 import App from '../../app/App';
 
 describe('Login Page', () => {
-  const loginResponse = rest.post(
+  const loginSuccessResponse = rest.post(
     'https://whispering-depths-29284.herokuapp.com/user/login',
     (req, res, ctx) => {
       // parse req.body
@@ -39,7 +39,7 @@ describe('Login Page', () => {
       return res(ctx.json(mockData));
     }
   );
-  const handlers = [loginResponse, allPostsResponse];
+  const handlers = [loginSuccessResponse, allPostsResponse];
 
   const server = new setupServer(...handlers);
 

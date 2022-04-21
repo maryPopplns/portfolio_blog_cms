@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import Analysis from './Analysis';
-import data from '../testData.json';
+import data from '../testData/grammarData.json';
 
 describe('Analysis', () => {
   const { errors1, errors2, body1, body2 } = data;
