@@ -34,6 +34,7 @@ function IndividualPost() {
         comment={comment}
         key={_id}
         id={_id}
+        postID={postID}
         allComments={allComments}
         setAllComments={setAllComments}
       />
