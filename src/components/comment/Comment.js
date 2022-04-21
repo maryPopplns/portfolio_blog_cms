@@ -15,11 +15,10 @@ function Comment({ comment, id, allComments, setAllComments, postID }) {
         },
       }
     )
-      .then(
-        (response) =>
-          response.status === 200 && setAllComments(filteredComments)
-      )
-      .catch((error) => console.log(error));
+      .then((response) => {
+        response.status === 200 && setAllComments(filteredComments);
+      })
+      .catch(() => console.log('error deleting comment'));
   }
   return (
     <li className='individual_post_comment'>

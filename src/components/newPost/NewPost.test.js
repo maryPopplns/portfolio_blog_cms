@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
+import allPosts from './allPosts.json';
 import data from '../testData.json';
 import Navbar from '../navbar/Navbar';
 import Homepage from '../homepage/Homepage';
@@ -23,7 +24,13 @@ describe('NewPost', () => {
       return res(ctx.json({ message: 'post created' }));
     }
   );
-  const handlers = [analyzeResponse, submitResponse];
+  const allPostsResponse = rest.get(
+    'https://whispering-depths-29284.herokuapp.com/post',
+    (req, res, ctx) => {
+      return res(ctx.json(allPosts));
+    }
+  );
+  const handlers = [analyzeResponse, submitResponse, allPostsResponse];
 
   const server = new setupServer(...handlers);
 
