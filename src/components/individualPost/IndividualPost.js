@@ -140,7 +140,9 @@ function IndividualPost() {
         <ul className='comments_container'>{commentComponents}</ul>
       </main>
       {analysisModal && (
-        <Analysis data={{ errors, body, setBody, setAnalysisModal }} />
+        <Analysis
+          data={{ errors, body, setBody, setAnalysis: setAnalysisModal }}
+        />
       )}
       {deleteModal && (
         <div className='delete_modal'>
