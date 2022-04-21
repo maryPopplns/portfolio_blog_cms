@@ -10,7 +10,8 @@ function IndividualPost() {
   const [body, setBody] = useState('');
   const [title, setTitle] = useState('');
   const [errors, setErrors] = useState([{}]);
-  const [analysis, setAnalysis] = useState(false);
+  const [analysisModal, setAnalysisModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
   const [allComments, setAllComments] = useState([]);
   const posts = useSelector((state) => state.posts.value);
   const jwtToken = useSelector((state) => state.jwtToken.value);
@@ -70,7 +71,7 @@ function IndividualPost() {
       .then(({ errors }) => {
         if (errors.length !== 0) {
           setErrors(errors);
-          setAnalysis(true);
+          setAnalysisModal(true);
         }
       })
       .catch((error) => console.log(error));
@@ -111,11 +112,31 @@ function IndividualPost() {
             <button disabled={!body && !title} type='submit'>
               save
             </button>
+            <button
+              className='delete_post_buton'
+              onClick={(event) => {
+                event.preventDefault();
+                setDeleteModal(true);
+              }}
+            >
+              delete
+            </button>
           </div>
         </form>
         <ul className='comments_container'>{commentComponents}</ul>
       </main>
-      {analysis && <Analysis data={{ errors, body, setBody, setAnalysis }} />}
+      {analysisModal && (
+        <Analysis data={{ errors, body, setBody, setAnalysisModal }} />
+      )}
+      {deleteModal && (
+        <div className='delete_modal'>
+          <h2>Delete?</h2>
+          <div>
+            <button>delete</button>
+            <button>cancel</button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

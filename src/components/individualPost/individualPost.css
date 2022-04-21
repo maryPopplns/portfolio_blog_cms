@@ -112,6 +112,38 @@ img.remove_individual_post_comment_icon {
 img.remove_individual_post_comment_icon:hover {
   background-color: rgb(0, 128, 100);
 }
+div.delete_modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.925);
+}
+div.delete_modal h2 {
+  position: fixed;
+  top: 10%;
+  font-family: var(--regular-font);
+  color: red;
+}
+div.delete_modal button {
+  font-family: var(--regular-font);
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--blue);
+  border-radius: 0.25rem;
+  background-color: black;
+}
+div.delete_modal button:nth-child(1) {
+  color: red;
+}
+div.delete_modal button:nth-child(2) {
+  color: white;
+}
 
 @media (max-width: 499px) {
   .individual_post label {
