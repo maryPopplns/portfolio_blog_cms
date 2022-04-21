@@ -78,7 +78,6 @@
   color: var(--blue);
   background-color: black;
   font-family: var(--thin-font);
-  font-size: 1.2rem;
   text-transform: uppercase;
   border: 3px solid var(--blue);
   border-radius: 0.25rem;
@@ -129,6 +128,7 @@ div.delete_modal h2 {
   top: 10%;
   font-family: var(--regular-font);
   color: red;
+  text-transform: uppercase;
 }
 div.delete_modal button {
   font-family: var(--regular-font);
@@ -137,6 +137,7 @@ div.delete_modal button {
   border: 2px solid var(--blue);
   border-radius: 0.25rem;
   background-color: black;
+  text-transform: uppercase;
 }
 div.delete_modal button:nth-child(1) {
   color: red;
@@ -156,6 +157,9 @@ div.delete_modal button:nth-child(2) {
   p.individual_post_comment_body {
     width: 250px;
   }
+  div.delete_modal h2 {
+    font-size: 1.5rem;
+  }
 }
 
 /* mobile */
@@ -163,12 +167,21 @@ div.delete_modal button:nth-child(2) {
   .individual_post label {
     font-size: 1.4rem;
   }
+  .individual_post button {
+    font-size: 1.2rem;
+  }
   .individual_post textarea,
   .individual_post input {
     font-size: 1.2rem;
   }
   p.individual_post_comment_body {
     width: 400px;
+  }
+  div.delete_modal h2 {
+    font-size: 1.8rem;
+  }
+  div.delete_modal button {
+    font-size: 1.2rem;
   }
 }
 
@@ -189,6 +202,12 @@ div.delete_modal button:nth-child(2) {
   }
   p.individual_post_comment_body {
     width: 600px;
+  }
+  div.delete_modal h2 {
+    font-size: 2.5rem;
+  }
+  div.delete_modal button {
+    font-size: 1.5rem;
   }
 }
 
