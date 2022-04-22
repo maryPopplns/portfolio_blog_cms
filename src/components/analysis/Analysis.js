@@ -88,7 +88,11 @@ function Analysis({ data }) {
       <div className='analysis_text'>{bodyText}</div>
       <hr className='analysis_suggestions_divisor' />
       <div className='analysis_button_container'>
-        <button className='analysis_button' onClick={saveHandler}>
+        <button
+          data-testid='save_analysis_button'
+          className='analysis_button'
+          onClick={saveHandler}
+        >
           save
         </button>
         <button className='analysis_button' onClick={cancelHandler}>

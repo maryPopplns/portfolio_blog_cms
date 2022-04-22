@@ -51,7 +51,7 @@ function Login() {
       <ul>
         <li>
           <input
-            data-testid='loginUsername'
+            data-testid='login_username'
             className={errorClass}
             id='username'
             type='text'
@@ -61,7 +61,7 @@ function Login() {
         </li>
         <li>
           <input
-            data-testid='loginPassword'
+            data-testid='login_password'
             className={errorClass}
             id='password'
             type='password'

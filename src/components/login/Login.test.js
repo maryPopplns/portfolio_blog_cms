@@ -54,8 +54,8 @@ describe('Login Page', () => {
       </Provider>
     );
 
-    const usernameInput = screen.getByTestId('loginPassword');
-    const passwordInput = screen.getByTestId('loginUsername');
+    const usernameInput = screen.getByTestId('login_password');
+    const passwordInput = screen.getByTestId('login_username');
 
     expect(usernameInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
@@ -80,8 +80,8 @@ describe('Login Page', () => {
       </Provider>
     );
 
-    const usernameInput = screen.getByTestId('loginUsername');
-    const passwordInput = screen.getByTestId('loginPassword');
+    const usernameInput = screen.getByTestId('login_username');
+    const passwordInput = screen.getByTestId('login_password');
 
     userEvent.type(usernameInput, 'spencer1');
     userEvent.type(passwordInput, '123');
@@ -92,14 +92,14 @@ describe('Login Page', () => {
 
     await waitFor(
       () => {
-        const updatedInput = screen.getByTestId('loginPassword');
+        const updatedInput = screen.getByTestId('login_password');
         expect(updatedInput).toHaveClass('login_input_error');
       },
       { timeout: 1000 }
     );
     await waitFor(
       () => {
-        const updatedInput = screen.getByTestId('loginPassword');
+        const updatedInput = screen.getByTestId('login_password');
         expect(updatedInput).not.toHaveClass('login_input_error');
       },
       { timeout: 3000 }
@@ -114,8 +114,8 @@ describe('Login Page', () => {
       </Provider>
     );
 
-    const usernameInput = screen.getByTestId('loginUsername');
-    const passwordInput = screen.getByTestId('loginPassword');
+    const usernameInput = screen.getByTestId('login_username');
+    const passwordInput = screen.getByTestId('login_password');
 
     userEvent.type(usernameInput, 'spencer');
     userEvent.type(passwordInput, '123');

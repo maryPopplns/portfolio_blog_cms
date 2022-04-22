@@ -8,16 +8,13 @@ import { render, screen, waitFor } from '@testing-library/react';
 
 import App from '../../app/App';
 import allPosts from '../testData/allPosts.json';
-import loginResponse from '../loginResponse.json';
+import loginResponse from '../testData/loginResponse.json';
 import grammarData from '../testData/grammarData.json';
 
 const postID = allPosts[2]._id;
 const postTitle = allPosts[2].title;
-// const allComments = allPosts[2].comments;
-// const commentID = allPosts[2].comments[0]._id;
-const postComment = allPosts[2].comments[0].comment;
 
-describe('Login Page', () => {
+describe('Individual Post', () => {
   const loginSuccessResponse = rest.post(
     'https://whispering-depths-29284.herokuapp.com/user/login',
     (req, res, ctx) => res(ctx.json(loginResponse))
@@ -25,6 +22,10 @@ describe('Login Page', () => {
   const editPostResponse = rest.put(
     `https://whispering-depths-29284.herokuapp.com/post/${postID}`,
     (req, res, ctx) => res(ctx.json({ message: 'post has been updated' }))
+  );
+  const deletePostResponse = rest.delete(
+    `https://whispering-depths-29284.herokuapp.com/post/${postID}`,
+    (req, res, ctx) => res(ctx.json())
   );
   const grammarResponse = rest.post(
     'https://whispering-depths-29284.herokuapp.com/grammar',
@@ -40,6 +41,7 @@ describe('Login Page', () => {
     editPostResponse,
     grammarResponse,
     allPostsResponse,
+    deletePostResponse,
   ];
 
   const server = new setupServer(...handlers);
@@ -48,7 +50,7 @@ describe('Login Page', () => {
   afterEach(() => server.resetHandlers());
   afterAll(() => server.close());
 
-  async function loginAndClickPost() {
+  test('renders proper visual elements', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -56,15 +58,12 @@ describe('Login Page', () => {
         </MemoryRouter>
       </Provider>
     );
-
-    const usernameInput = screen.getByTestId('loginPassword');
-    const passwordInput = screen.getByTestId('loginUsername');
-
+    const usernameInput = screen.getByTestId('login_username');
+    const passwordInput = screen.getByTestId('login_password');
     userEvent.type(usernameInput, 'spencer');
     userEvent.type(passwordInput, '123');
 
     const submitButton = screen.getByRole('button', { name: 'submit' });
-
     userEvent.click(submitButton);
 
     let heading;
@@ -72,47 +71,20 @@ describe('Login Page', () => {
       heading = screen.getByRole('heading', { name: postTitle });
       expect(heading).toBeInTheDocument();
     });
-
     userEvent.click(heading);
-  }
 
-  test('renders proper visual elements', async () => {
-    await loginAndClickPost();
-
-    const title = screen.getByLabelText('title');
-    const body = screen.getByLabelText('body');
-    const analyzeButton = screen.getByRole('button', { name: 'analyze' });
-    const saveButton = screen.getByRole('button', { name: 'save' });
     const deleteButton = screen.getByRole('button', { name: 'delete' });
+    userEvent.click(deleteButton);
 
-    expect(title).toBeInTheDocument();
-    expect(body).toBeInTheDocument();
-    expect(analyzeButton).toBeInTheDocument();
-    expect(saveButton).toBeInTheDocument();
-    expect(deleteButton).toBeInTheDocument();
-  });
-  test.skip('analyze renders "analyze" modal', async () => {
-    await loginAndClickPost();
+    const cancelButton = screen.getByRole('button', { name: 'cancel' });
+    userEvent.click(cancelButton);
 
-    // write in textbox
-    // fireEvent.change(screen.getByRole('textbox', { name: 'body' }), {
-    //   target: { value: 'body of the new post' },
-    // });
-
-    // fireEvent(
-    //   screen.getByRole('button', { name: 'analyze' }),
-    //   new MouseEvent('click', {
-    //     bubbles: true,
-    //     cancelable: true,
-    //   })
-    // );
-
-    // await waitFor(
-    //   () => {
-    //     const save = screen.getByRole('button', { name: 'save' });
-    //     expect(save).toBeInTheDocument();
-    //   },
-    //   { timeout: 10000 }
-    // );
+    userEvent.click(deleteButton);
+    const confirmDelete = screen.getByTestId('delete_post_button');
+    userEvent.click(confirmDelete);
+    await waitFor(() => {
+      const allPosts = screen.getByRole('heading', { name: 'all posts' });
+      expect(allPosts).toBeInTheDocument();
+    });
   });
 });

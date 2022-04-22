@@ -31,14 +31,14 @@ function IndividualPost() {
 
   function formHandler(event) {
     event.preventDefault();
-    const newPost = urlencoded({ title, body });
+    const updatedPost = urlencoded({ title, body });
     fetch(`https://whispering-depths-29284.herokuapp.com/post/${postID}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Bearer ${jwtToken}`,
       },
-      body: newPost,
+      body: updatedPost,
     })
       .then(() => navigate('/'))
       .catch((error) => console.log(error));
@@ -148,7 +148,9 @@ function IndividualPost() {
         <div className='delete_modal'>
           <h2>Delete?</h2>
           <div>
-            <button onClick={deleteHandler}>delete</button>
+            <button data-testid='delete_post_button' onClick={deleteHandler}>
+              delete
+            </button>
             <button
               onClick={(event) => {
                 event.preventDefault();
