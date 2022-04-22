@@ -1,1 +1,1 @@
-# Portfolio blog CMS
+# Blog Content Management System
