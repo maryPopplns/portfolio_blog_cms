@@ -78,5 +78,16 @@ describe('Individual Post', () => {
     expect(analyzeButton).toBeInTheDocument();
     expect(saveButton).toBeInTheDocument();
     expect(deleteButton).toBeInTheDocument();
+
+    const titleInput = screen.getByRole('textbox', { name: 'title' });
+    userEvent.type(titleInput, ' 1');
+    const bodyInput = screen.getByRole('textbox', { name: 'body' });
+    userEvent.type(bodyInput, ' 1');
+
+    const titleValue = screen.getByDisplayValue('post title 1');
+    const bodyValue = screen.getByDisplayValue('post body 1');
+
+    expect(titleValue).toBeInTheDocument();
+    expect(bodyValue).toBeInTheDocument();
   });
 });
