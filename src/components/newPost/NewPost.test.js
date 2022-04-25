@@ -2,6 +2,7 @@ import { rest } from 'msw';
 import store from '../../store/store';
 import { setupServer } from 'msw/node';
 import { Provider } from 'react-redux';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
@@ -52,6 +53,17 @@ describe('NewPost', () => {
     const body = screen.getByLabelText('body');
     const analyzeButton = screen.getByRole('button', { name: 'analyze' });
     const submitButton = screen.getByRole('button', { name: 'submit' });
+
+    const categoryInput = screen.getByRole('textbox', { name: 'category' });
+    userEvent.type(categoryInput, 'the best category');
+    const showingInput = screen.getByRole('checkbox', { name: 'showing' });
+    userEvent.click(showingInput);
+
+    const categoryValue = screen.getByDisplayValue('the best category');
+    const checkedInput = screen.getByRole('checkbox', { checked: true });
+
+    expect(categoryValue).toBeInTheDocument();
+    expect(checkedInput).toBeInTheDocument();
 
     expect(header).toBeInTheDocument();
     expect(title).toBeInTheDocument();
