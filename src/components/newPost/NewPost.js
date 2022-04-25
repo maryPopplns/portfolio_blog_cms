@@ -8,6 +8,8 @@ import urlencoded from '../../helpers/urlencoded';
 function NewPost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [category, setCategory] = useState('');
+  const [showing, setShowing] = useState(false);
   const [errors, setErrors] = useState([{}]);
   const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);
@@ -15,7 +17,7 @@ function NewPost() {
 
   function formHandler(event) {
     event.preventDefault();
-    const newPost = urlencoded({ title, body });
+    const newPost = urlencoded({ title, body, category, showing });
     fetch('https://whispering-depths-29284.herokuapp.com/post', {
       method: 'POST',
       headers: {
@@ -77,6 +79,30 @@ function NewPost() {
               onChange={({ target }) => setBody(target.value)}
             ></textarea>
           </div>
+          {/*  */}
+          <ul className='category_showing_container'>
+            <li className='category_container'>
+              <label htmlFor='category'>category</label>
+              <input
+                id='category'
+                name='category'
+                type='text'
+                value={category}
+                onChange={({ target }) => setCategory(target.value)}
+              ></input>
+            </li>
+            <li className='showing_container'>
+              <label htmlFor='showing'>showing</label>
+              <input
+                id='showing'
+                name='showing'
+                type='checkbox'
+                value={showing}
+                onChange={({ target }) => setShowing((prev) => !prev)}
+              ></input>
+            </li>
+          </ul>
+          {/*  */}
           <div className='new_post_button_container'>
             <button type='button' onClick={body ? analyzeHandler : undefined}>
               analyze
