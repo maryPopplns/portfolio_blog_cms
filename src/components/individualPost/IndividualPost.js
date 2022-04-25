@@ -132,6 +132,7 @@ function IndividualPost() {
                 id='category'
                 name='category'
                 type='text'
+                required
                 value={category}
                 onChange={({ target }) => setCategory(target.value)}
               ></input>
@@ -143,6 +144,7 @@ function IndividualPost() {
                 name='showing'
                 type='checkbox'
                 checked={showing}
+                value={showing}
                 onChange={({ target }) => setShowing((prev) => !prev)}
               ></input>
             </li>

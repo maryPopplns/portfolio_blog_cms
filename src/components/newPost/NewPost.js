@@ -79,7 +79,6 @@ function NewPost() {
               onChange={({ target }) => setBody(target.value)}
             ></textarea>
           </div>
-          {/*  */}
           <ul className='category_showing_container'>
             <li className='category_container'>
               <label htmlFor='category'>category</label>
@@ -102,7 +101,6 @@ function NewPost() {
               ></input>
             </li>
           </ul>
-          {/*  */}
           <div className='new_post_button_container'>
             <button type='button' onClick={body ? analyzeHandler : undefined}>
               analyze
