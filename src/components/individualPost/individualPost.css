@@ -68,6 +68,21 @@
   border: none;
   font-family: var(--thin-font);
 }
+.category_showing_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.category_container,
+.showing_container {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+.category_showing_container label {
+  margin-right: 1rem;
+}
 .individual_post_button_container {
   display: flex;
   margin-top: 2rem;
@@ -186,6 +201,11 @@ div.delete_modal button:nth-child(2) {
   }
 }
 
+@media (max-width: 800px) {
+  .category_showing_container {
+    align-items: flex-start;
+  }
+}
 /* tablet */
 @media (min-width: 800px) {
   .individual_post label {
