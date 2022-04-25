@@ -89,5 +89,17 @@ describe('Individual Post', () => {
 
     expect(titleValue).toBeInTheDocument();
     expect(bodyValue).toBeInTheDocument();
+
+    //
+    const categoryInput = screen.getByRole('textbox', { name: 'category' });
+    userEvent.type(categoryInput, ' giant');
+    const showingInput = screen.getByRole('checkbox', { name: 'showing' });
+    userEvent.click(showingInput);
+
+    const categoryValue = screen.getByDisplayValue('tech giant');
+    const checkedInput = screen.getByRole('checkbox', { checked: false });
+
+    expect(categoryValue).toBeInTheDocument();
+    expect(checkedInput).toBeInTheDocument();
   });
 });
