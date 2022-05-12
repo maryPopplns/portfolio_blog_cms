@@ -9,7 +9,7 @@ function NewPost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [category, setCategory] = useState('');
-  const [showing, setShowing] = useState(false);
+  const [showing, setShowing] = useState(true);
   const [errors, setErrors] = useState([{}]);
   const [analysis, setAnalysis] = useState(false);
   const jwtToken = useSelector((state) => state.jwtToken.value);

@@ -12,6 +12,12 @@ function Login() {
   const [errorClass, setErrorClass] = useState('');
   const dispatch = useDispatch();
 
+  function testHandler() {
+    setUsername('test');
+    setPassword('123');
+    // loginHandler();
+  }
+
   function loginHandler(event) {
     event.preventDefault();
 
@@ -71,6 +77,9 @@ function Login() {
         </li>
         <div>
           <button className='login_form_submit_button'>submit</button>
+          <button onClick={testHandler} className='test_login'>
+            click here for test
+          </button>
         </div>
       </ul>
     </form>
