@@ -105,7 +105,7 @@ describe('Login Page', () => {
       { timeout: 3000 }
     );
   });
-  test('correct password grants access', async () => {
+  test('superUser grants access', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
