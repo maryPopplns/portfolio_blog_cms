@@ -12,7 +12,7 @@ User interface to interact with my blog API. Allows for creation, editing, and d
 
 ![project demo](https://media.giphy.com/media/OATAJk8MZv8NtlEUus/giphy.gif)
 
-## Grammer/Spelling Demo
+## Grammar/Spelling Demo
 
 ![grammar demo](https://media.giphy.com/media/6gwjsMViE20cxsPlzm/giphy.gif)
 
